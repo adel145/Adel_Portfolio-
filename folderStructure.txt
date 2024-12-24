@@ -1,0 +1,267 @@
+├── eslint.config.js
+├── generatePaths.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── public
+│   ├── a_personal_computer
+│   │   ├── license.txt
+│   │   ├── scene.bin
+│   │   ├── scene.gltf
+│   │   └── textures
+│   │       ├── Material__36_baseColor.png
+│   │       ├── Material__37_baseColor.png
+│   │       ├── Material__37_metallicRoughness.png
+│   │       ├── Material__37_normal.png
+│   │       ├── Material__38_baseColor.png
+│   │       ├── Material__38_metallicRoughness.png
+│   │       ├── Material__38_normal.png
+│   │       ├── Material__39_baseColor.png
+│   │       ├── Material__39_metallicRoughness.png
+│   │       ├── Material__39_normal.png
+│   │       ├── Material__40_baseColor.png
+│   │       ├── Material__40_metallicRoughness.png
+│   │       ├── Material__40_normal.png
+│   │       ├── Material__45_baseColor.png
+│   │       ├── Material__45_metallicRoughness.png
+│   │       ├── Material__45_normal.png
+│   │       ├── Material__57_baseColor.png
+│   │       ├── Material__59_baseColor.png
+│   │       ├── Material__63_baseColor.png
+│   │       ├── Material__63_metallicRoughness.png
+│   │       ├── Material__63_normal.png
+│   │       ├── Material__64_baseColor.png
+│   │       ├── Material__64_metallicRoughness.png
+│   │       ├── Material__64_normal.png
+│   │       ├── Material__65_baseColor.png
+│   │       ├── Material__65_metallicRoughness.png
+│   │       ├── Material__65_normal.png
+│   │       ├── Material__67_baseColor.png
+│   │       ├── Material__67_metallicRoughness.png
+│   │       ├── Material__67_normal.png
+│   │       ├── Material__82_baseColor.jpeg
+│   │       ├── mouse_keys_baseColor.png
+│   │       ├── mouse_keys_metallicRoughness.png
+│   │       ├── mouse_keys_normal.png
+│   │       ├── pages_baseColor.jpeg
+│   │       ├── PC_logo_baseColor.png
+│   │       ├── PC_logo_metallicRoughness.png
+│   │       └── PC_logo_normal.png
+│   ├── computer_desk1
+│   │   ├── license.txt
+│   │   ├── scene.bin
+│   │   ├── scene.gltf
+│   │   └── textures
+│   │       ├── Alpha_baseColor.png
+│   │       ├── Alpha_metallicRoughness.png
+│   │       ├── Alpha_normal.png
+│   │       ├── Book01_baseColor.png
+│   │       ├── Book01_metallicRoughness.png
+│   │       ├── Book01_normal.png
+│   │       ├── Book01_specularf0.png
+│   │       ├── Book02_baseColor.png
+│   │       ├── Book02_metallicRoughness.png
+│   │       ├── Book02_normal.png
+│   │       ├── Chair_baseColor.png
+│   │       ├── Chair_metallicRoughness.png
+│   │       ├── Chair_normal.png
+│   │       ├── Computer_baseColor.png
+│   │       ├── Computer_metallicRoughness.png
+│   │       ├── Computer_normal.png
+│   │       ├── Computer_specularf0.png
+│   │       ├── DeskLamp_baseColor.png
+│   │       ├── DeskLamp_metallicRoughness.png
+│   │       ├── DeskLamp_normal.png
+│   │       ├── Desk_baseColor.png
+│   │       ├── Desk_metallicRoughness.png
+│   │       ├── Desk_normal.png
+│   │       ├── Keyboard_baseColor.png
+│   │       ├── Keyboard_metallicRoughness.png
+│   │       ├── Keyboard_normal.png
+│   │       ├── Loudspeaker01_baseColor.png
+│   │       ├── Loudspeaker01_metallicRoughness.png
+│   │       ├── Loudspeaker01_normal.png
+│   │       ├── Loudspeaker02_baseColor.png
+│   │       ├── Loudspeaker02_metallicRoughness.png
+│   │       ├── Loudspeaker02_normal.png
+│   │       ├── material_baseColor.png
+│   │       ├── material_metallicRoughness.png
+│   │       ├── material_normal.png
+│   │       ├── Monitor_baseColor.png
+│   │       ├── Monitor_metallicRoughness.png
+│   │       ├── Monitor_normal.png
+│   │       ├── Mouse_baseColor.png
+│   │       ├── Mouse_metallicRoughness.png
+│   │       ├── Mouse_normal.png
+│   │       ├── StationeryCup_baseColor.png
+│   │       ├── StationeryCup_metallicRoughness.png
+│   │       └── StationeryCup_normal.png
+│   ├── desktop_pc
+│   │   ├── license.txt
+│   │   ├── scene.bin
+│   │   ├── scene.gltf
+│   │   └── textures
+│   │       ├── Material.002_baseColor.png
+│   │       ├── Material.023_baseColor.jpeg
+│   │       ├── Material.024_baseColor.jpeg
+│   │       ├── Material.074_0_baseColor.png
+│   │       ├── Material.074_10_baseColor.jpeg
+│   │       ├── Material.074_11_baseColor.png
+│   │       ├── Material.074_12_baseColor.jpeg
+│   │       ├── Material.074_13_baseColor.png
+│   │       ├── Material.074_14_baseColor.png
+│   │       ├── Material.074_15_baseColor.png
+│   │       ├── Material.074_16_baseColor.png
+│   │       ├── Material.074_17_baseColor.png
+│   │       ├── Material.074_18_baseColor.png
+│   │       ├── Material.074_18_emissive.png
+│   │       ├── Material.074_19_baseColor.png
+│   │       ├── Material.074_1_baseColor.jpeg
+│   │       ├── Material.074_20_baseColor.png
+│   │       ├── Material.074_21_baseColor.png
+│   │       ├── Material.074_22_baseColor.png
+│   │       ├── Material.074_23_baseColor.png
+│   │       ├── Material.074_24_baseColor.png
+│   │       ├── Material.074_24_emissive.png
+│   │       ├── Material.074_25_baseColor.jpeg
+│   │       ├── Material.074_26_baseColor.png
+│   │       ├── Material.074_27_baseColor.png
+│   │       ├── Material.074_27_emissive.png
+│   │       ├── Material.074_28_baseColor.png
+│   │       ├── Material.074_29_baseColor.png
+│   │       ├── Material.074_2_baseColor.jpeg
+│   │       ├── Material.074_30_baseColor.png
+│   │       ├── Material.074_31_baseColor.png
+│   │       ├── Material.074_32_baseColor.jpeg
+│   │       ├── Material.074_33_baseColor.png
+│   │       ├── Material.074_34_baseColor.jpeg
+│   │       ├── Material.074_35_baseColor.png
+│   │       ├── Material.074_36_baseColor.jpeg
+│   │       ├── Material.074_39_baseColor.jpeg
+│   │       ├── Material.074_3_baseColor.png
+│   │       ├── Material.074_40_baseColor.png
+│   │       ├── Material.074_4_baseColor.png
+│   │       ├── Material.074_4_emissive.png
+│   │       ├── Material.074_5_baseColor.png
+│   │       ├── Material.074_6_baseColor.png
+│   │       ├── Material.074_7_baseColor.png
+│   │       ├── Material.074_8_baseColor.png
+│   │       ├── Material.074_9_baseColor.png
+│   │       ├── Material.074_9_emissive.png
+│   │       ├── Material.074_baseColor.png
+│   │       ├── Material_baseColor.jpeg
+│   │       ├── Material_metallicRoughness.png
+│   │       └── Tasten_2_baseColor.jpeg
+│   ├── johann-strau-denkmal
+│   │   ├── license.txt
+│   │   ├── scene.bin
+│   │   ├── scene.gltf
+│   │   ├── textures
+│   │   │   └── Strauss_O_Material_u1_v1_baseColor.png
+│   │   └── צילום מסך 2024-12-19 010736.png
+│   └── venice_mask
+│       ├── license.txt
+│       ├── scene.bin
+│       ├── scene.gltf
+│       ├── textures
+│       │   ├── lambert1_baseColor.png
+│       │   ├── lambert1_metallicRoughness.png
+│       │   ├── lambert1_normal.png
+│       │   ├── lambert2_baseColor.png
+│       │   ├── lambert2_metallicRoughness.png
+│       │   ├── lambert2_normal.png
+│       │   ├── lambert3_baseColor.png
+│       │   ├── lambert3_metallicRoughness.png
+│       │   ├── lambert3_normal.png
+│       │   ├── lambert4_baseColor.png
+│       │   ├── lambert4_metallicRoughness.png
+│       │   ├── lambert4_normal.png
+│       │   ├── lambert5_baseColor.png
+│       │   ├── lambert5_metallicRoughness.png
+│       │   └── lambert5_normal.png
+│       └── צילום מסך 2024-12-09 022203.png
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   ├── 103 paintWithAdel_8k_resized-Restoed.jpg
+│   │   ├── backend.png
+│   │   ├── close.svg
+│   │   ├── company
+│   │   │   ├── atriis.png
+│   │   │   ├── mcdonald.png
+│   │   │   ├── meta.png
+│   │   │   ├── Programmer.png
+│   │   │   ├── shopify.png
+│   │   │   ├── sprintcity.png
+│   │   │   ├── starbucks.png
+│   │   │   ├── tesla.png
+│   │   │   ├── waiter.png
+│   │   │   └── Welocalize.png
+│   │   ├── creator.png
+│   │   ├── education
+│   │   │   ├── bsc.jpeg
+│   │   │   ├── CYDEO.png
+│   │   │   ├── nvidia.jpg
+│   │   │   ├── purestorage.png
+│   │   │   └── toga.jpeg
+│   │   ├── github.png
+│   │   ├── herobg.png
+│   │   ├── index.js
+│   │   ├── logo.svg
+│   │   ├── menu.svg
+│   │   ├── mobile.png
+│   │   ├── panimation.png
+│   │   ├── PetsShop.png
+│   │   ├── pexels-felixmittermeier-956999.jpg
+│   │   ├── pexels-steve-1509534.jpg
+│   │   ├── ReactShoes.jpg
+│   │   ├── ScrollTigger.png
+│   │   ├── tech
+│   │   │   ├── cpp.png
+│   │   │   ├── csharp.png
+│   │   │   ├── css.png
+│   │   │   ├── git.png
+│   │   │   ├── html.png
+│   │   │   ├── java.png
+│   │   │   ├── javascript.png
+│   │   │   ├── machineLearning.png
+│   │   │   ├── mongodb.png
+│   │   │   ├── nodejs.png
+│   │   │   ├── python.png
+│   │   │   ├── reactjs.png
+│   │   │   └── systemTesting.png
+│   │   ├── visit.png
+│   │   ├── waitertip.png
+│   │   └── web.png
+│   ├── components
+│   │   ├── About.jsx
+│   │   ├── canvas
+│   │   │   ├── Ball.jsx
+│   │   │   ├── Computers.jsx
+│   │   │   ├── Earth.jsx
+│   │   │   ├── index.js
+│   │   │   └── Stars.jsx
+│   │   ├── Contact.jsx
+│   │   ├── Education.jsx
+│   │   ├── Experience.jsx
+│   │   ├── Feedbacks.jsx
+│   │   ├── Fun.jsx
+│   │   ├── Hero.jsx
+│   │   ├── index.js
+│   │   ├── Loader.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── Tech.jsx
+│   │   └── Works.jsx
+│   ├── constants
+│   │   └── index.js
+│   ├── hoc
+│   │   ├── index.js
+│   │   └── SectionWrapper.jsx
+│   ├── index.css
+│   ├── main.jsx
+│   ├── styles.js
+│   └── utils
+│       └── motion.js
+├── tailwind.config.js
+└── vite.config.js
