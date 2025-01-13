@@ -61,7 +61,7 @@
 
   <p>Below are 10 screenshots that showcase different sections of my portfolio website:</p>
   <div class="image-container">
-    <img src="image1_url" alt="Screenshot 1">
+    <img src="צילום מסך 2025-01-13 152101.png" alt="Screenshot 1">
     <img src="image2_url" alt="Screenshot 2">
     <img src="image3_url" alt="Screenshot 3">
     <img src="image4_url" alt="Screenshot 4">
