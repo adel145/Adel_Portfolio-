@@ -22,15 +22,15 @@
       font-weight: bold;
     }
     .youtube-link {
-      font-size: 0.8em; /* Bigger font size */
+      font-size: 1.8em; /* Bigger font size */
       display: inline-flex;
       align-items: center;
       gap: 10px;
       margin: 20px 0;
     }
     .youtube-link img {
-      width: 40px;
-      height: 40px;
+      width: 4px;
+      height: 4px;
     }
     .image-container {
       display: flex;
