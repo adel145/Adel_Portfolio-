@@ -29,8 +29,8 @@
       margin: 20px 0;
     }
     .youtube-link img {
-      width: 24px; /* Adjusted size */
-      height: 24px;
+      width: 4px; /* Adjusted size */
+      height: 4px;
     }
     .image-container {
       display: flex;
