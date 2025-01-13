@@ -6,15 +6,32 @@
 
 ---
 
-### Below are 10 screenshots that showcase different sections of my portfolio website:
+### Below are 7 screenshots that showcase different sections of my portfolio website:
 
-![Screenshot 1](image1_url)
-![Screenshot 2](image2_url)
-![Screenshot 3](image3_url)
-![Screenshot 4](image4_url)
-![Screenshot 5](image5_url)
-![Screenshot 6](image6_url)
-![Screenshot 7](image7_url)
-![Screenshot 8](image8_url)
-![Screenshot 9](image9_url)
-![Screenshot 10](image10_url)
+### Home Page section:
+
+![Screenshot 1](1homepage.png)
+
+### Overview section:
+![Screenshot 2](2_overview.png)
+
+### Work Experience section:
+![Screenshot 2](3Work_Experience.png)
+
+### Education section:
+![Screenshot 4](4Education.png)
+
+### Projects section:
+![Screenshot 5](5projects.png)
+
+### Contact section:
+![Screenshot 6](6contact.png)
+
+### myWorld Page :
+![Screenshot 7](7myWorld.png)
+
+
+
+
+
+
