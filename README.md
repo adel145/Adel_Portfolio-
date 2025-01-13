@@ -1,21 +1,17 @@
-<h1>Visit: <a href="https://adel145.github.io/Adel_Portfolio-/" target="_blank">https://adel145.github.io/Adel_Portfolio-/</a></h1>
+# Visit: [https://adel145.github.io/Adel_Portfolio-/](https://adel145.github.io/Adel_Portfolio-/)
 
-<h2>
-  If the website is under construction, you can check out this YouTube video in the meantime: 
-  <a href="https://www.youtube.com/watch?v=NkZpJRHknQc" target="_blank">Watch on YouTube</a>
-</h2>
+## If the website is under construction, you can check out this YouTube video in the meantime: 
+[Watch on YouTube](https://www.youtube.com/watch?v=NkZpJRHknQc)
 
-<p>Below are 10 screenshots that showcase different sections of my portfolio website:</p>
+Below are 10 screenshots that showcase different sections of my portfolio website:
 
-<div>
-  <img src="image1_url" alt="Screenshot 1" width="300" style="margin:10px;">
-  <img src="image2_url" alt="Screenshot 2" width="300" style="margin:10px;">
-  <img src="image3_url" alt="Screenshot 3" width="300" style="margin:10px;">
-  <img src="image4_url" alt="Screenshot 4" width="300" style="margin:10px;">
-  <img src="image5_url" alt="Screenshot 5" width="300" style="margin:10px;">
-  <img src="image6_url" alt="Screenshot 6" width="300" style="margin:10px;">
-  <img src="image7_url" alt="Screenshot 7" width="300" style="margin:10px;">
-  <img src="image8_url" alt="Screenshot 8" width="300" style="margin:10px;">
-  <img src="image9_url" alt="Screenshot 9" width="300" style="margin:10px;">
-  <img src="image10_url" alt="Screenshot 10" width="300" style="margin:10px;">
-</div>
+![Screenshot 1](image1_url)
+![Screenshot 2](image2_url)
+![Screenshot 3](image3_url)
+![Screenshot 4](image4_url)
+![Screenshot 5](image5_url)
+![Screenshot 6](image6_url)
+![Screenshot 7](image7_url)
+![Screenshot 8](image8_url)
+![Screenshot 9](image9_url)
+![Screenshot 10](image10_url)
