@@ -25,12 +25,13 @@
       font-size: 1.5em; /* Large font size */
       display: inline-flex;
       align-items: center;
-      gap: 8px; /* Space between icon and text */
+      gap: 5px; /* Space between icon and text */
       margin: 20px 0;
     }
     .youtube-link img {
-      width: 4px; /* Adjusted size */
-      height: 4px;
+      width: 16px; /* Smaller size for the icon */
+      height: 16px;
+      vertical-align: middle; /* Aligns the icon with the text */
     }
     .image-container {
       display: flex;
@@ -61,7 +62,7 @@
 
   <p>Below are 10 screenshots that showcase different sections of my portfolio website:</p>
   <div class="image-container">
-    <img src="צילום מסך 2025-01-13 152101.png" alt="Screenshot 1">
+    <img src="image1_url" alt="Screenshot 1">
     <img src="image2_url" alt="Screenshot 2">
     <img src="image3_url" alt="Screenshot 3">
     <img src="image4_url" alt="Screenshot 4">
