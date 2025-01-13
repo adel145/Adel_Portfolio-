@@ -22,7 +22,7 @@
       font-weight: bold;
     }
     .youtube-link {
-      font-size: 1.8em; /* Bigger font size */
+      font-size: 0.8em; /* Bigger font size */
       display: inline-flex;
       align-items: center;
       gap: 10px;
