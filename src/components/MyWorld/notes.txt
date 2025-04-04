@@ -1,0 +1,5 @@
+
+mongodb+srv://adel145:adel145@cluster0.zzbywqf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+Am207282542mongodb
+adel145

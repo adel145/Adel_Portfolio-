@@ -1,3 +1,5 @@
+//src\components\Education.jsx
+import { lazy, Suspense } from 'react'; // Import lazy and Suspense
 import { Tilt } from "react-tilt"
 import { motion } from "framer-motion"
 
@@ -6,11 +8,15 @@ import {visit} from "../assets"
 import { SectionWrapper } from "../hoc" //
 import { certificates } from "../constants"
 import { fadeIn, textVariant } from "../utils/motion";
-import { max } from "three/webgpu"
+//import { max } from "three/webgpu"
+import LazyImage from './LazyImage'; 
 
 const CertificateCard = ({ index, name, college, description, tags, image, source_code_link }) => {
     return (
-      <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+      <motion.div 
+      variants={fadeIn("up", "spring", index * 0.5, 0.75)}
+      style={{ willChange: 'transform, opacity' }}
+      >
         <Tilt
           options={{
             max: 45,
@@ -20,10 +26,11 @@ const CertificateCard = ({ index, name, college, description, tags, image, sourc
           className="bg-tertiary p-5 rounded-2xl sm:w-[300px] w-full"
         >
           <div className="relative w-full h-[230px]">
-            <img
+            <LazyImage
               src={image}
               alt={name}
               className="w-full h-full object-cover rounded-2xl"
+              loading="lazy"
             />
   
             <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
@@ -31,10 +38,11 @@ const CertificateCard = ({ index, name, college, description, tags, image, sourc
                 onClick={() => window.open(source_code_link, "_blank")}
                 className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
               >
-                <img
+                <LazyImage
                   src={visit}
                   alt="visit"
                   className="w-1/2 h-1/2 object-contain"
+                  loading="lazy"
                 />
               </div>
             </div>

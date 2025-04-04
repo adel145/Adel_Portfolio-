@@ -1,12 +1,24 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/Adel_Portfolio/', // Replace <Adel_Portfolio> with your repository name
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          // Create separate chunks for large dependencies
+          if (id.includes('node_modules')) {
+            if (id.includes('three')) {
+              return 'three'; // Separate chunk for Three.js
+            }
+            if (id.includes('framer-motion')) {
+              return 'framer-motion'; // Separate chunk for Framer Motion
+            }
+            return 'vendor'; // Default chunk for other dependencies
+          }
+        },
+      },
+    },
+  },
 });
-
-
-
-

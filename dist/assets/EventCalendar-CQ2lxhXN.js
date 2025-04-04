@@ -1,0 +1,1 @@
+import{j as e}from"./vendor-Toy_dwVB.js";import"./three-DNkHk5z5.js";const t=()=>e.jsxs("div",{children:[e.jsx("h1",{children:"Event Calendar"}),e.jsx("p",{children:"Organize your events with a Google Calendar-like interface."})]});export{t as default};

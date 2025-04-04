@@ -1,9 +1,10 @@
+import { lazy, Suspense } from 'react'; // Import lazy and Suspense
 import { useState, useRef } from "react"
 import { motion } from "framer-motion"
 import emailjs from "@emailjs/browser"
 
 import { styles } from "../styles"
-import { EarthCanvas } from "./canvas"
+import { Earth } from "./canvas"
 import { SectionWrapper } from "../hoc"
 import { slideIn } from "../utils/motion"
 import { use } from "react"
@@ -67,6 +68,7 @@ const Contact = () => {
 
         <motion.div
           variants={slideIn('left', "tween", 0.2, 1)}
+          style={{ willChange: 'transform, opacity' }}
           initial="hidden"
           animate="show"
           className="flex-[0.75] bg-black-100 p-8 rounded-2xl">
@@ -134,7 +136,7 @@ const Contact = () => {
           initial="hidden"
           animate="show"
           className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]">
-          <EarthCanvas />
+          <Earth />
 
         </motion.div>
 

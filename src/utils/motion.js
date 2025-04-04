@@ -1,20 +1,35 @@
-export const textVariant = (delay) => {
-    return {
-      hidden: {
-        y: -50,
-        opacity: 0,
-      },
-      show: {
-        y: 0,
-        opacity: 1,
-        transition: {
-          type: "spring",
-          duration: 1.25,
-          delay: delay,
-        },
-      },
-    };
-  };
+// export const textVariant = (delay) => {
+//     return {
+//       hidden: {
+//         y: -50,
+//         opacity: 0,
+//       },
+//       show: {
+//         y: 0,
+//         opacity: 1,
+//         transition: {
+//           type: "spring",
+//           duration: 1.25,
+//           delay: delay,
+//         },
+//       },
+//     };
+//   };
+export const textVariant = (delay = 0) => ({
+  hidden: {
+    opacity: 0,
+    y: 50, // Start 50px below
+  },
+  show: {
+    opacity: 1,
+    y: 0, // Move to original position
+    transition: {
+      type: 'spring', // Smooth spring animation
+      duration: 1.2, // Animation duration
+      delay, // Delay before animation starts
+    },
+  },
+});
   
   export const fadeIn = (direction, type, delay, duration) => {
     return {

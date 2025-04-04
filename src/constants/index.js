@@ -37,6 +37,10 @@ import {
   nvidia,
   purestorage,
   toga,
+  calendar,
+  todo,
+  cinema,
+  notes,
 
   } from "../assets";
   
@@ -68,34 +72,60 @@ import {
   // Welocalize, 
   // } from "../assets/company";
 
-  export const navLinks = [
-    {
-      id: "about",
-      title: "About",
-    },
-    {
-      id: "work",
-      title: "Work",
-    },
-    {
-      id: "education",
-      title: "Education",
-    },
-    {
-      id:"projects",
-      title: "Projects"
-    },
+  // export const navLinks = [
+  //   {
+  //     id: "about",
+  //     title: "About",
+  //   },
+  //   {
+  //     id: "work",
+  //     title: "Work",
+  //   },
+  //   {
+  //     id: "education",
+  //     title: "Education",
+  //   },
+  //   {
+  //     id:"projects",
+  //     title: "Projects"
+  //   },
 
-    {
-      id: "contact",
-      title: "Contact", 
-    },
+  //   {
+  //     id: "contact",
+  //     title: "Contact", 
+  //   },
     
-    {
-      id: "MYWORLD",
-      title: "MyWorld",
-    }
+  //   {
+  //     id: "MYWORLD",
+  //     title: "MyWorld",
+  //   }
+  // ];
+
+
+  export const navLinks = [
+    { id: "about",
+       title: "About",
+         
+      },
+    { id: "work",
+       title: "Work",
+         
+      },
+    { id: "education",
+       title: "Education",
+         
+      },
+    { id: "projects",
+       title: "Projects",
+        
+      },
+    { id: "contact",
+       title: "Contact",
+         
+      },
+    
   ];
+  
   
   const services = [
     {
@@ -455,6 +485,7 @@ import {
     },
     
   ];
+  
 //B.Sc.Computer Science
   const certificates = [
     {
@@ -476,6 +507,7 @@ import {
       image: bsc,
       source_code_link: "https://www.sapir.ac.il/ba/computer_science",
     },
+    
     {
       name: "Java Developer ",
       college: "CYDEO",
@@ -571,6 +603,90 @@ import {
     
     
   ];
+
+  export const pages = [
+    {
+      name: "ToDo",
+      description: "A task management app, linked with MongoDB to save and manage tasks effectively. Styled with a modern, beautiful, and creative design.",
+      tags: [
+        {
+          name: "tasks",
+          color: "text-blue-500",
+        },
+        {
+          name: "mongodb",
+          color: "text-green-500",
+        },
+        {
+          name: "modern design",
+          color: "text-purple-500",
+        },
+      ],
+      image: todo, // Replace with your image path
+      page_link: "/todo",
+    },
+    {
+      name: "MovieApp",
+      description: "A movie and series management app linked to cloud storage for saving and accessing videos. Includes advanced features and a creative, modern design.",
+      tags: [
+        {
+          name: "movies",
+          color: "text-red-500",
+        },
+        {
+          name: "cloud storage",
+          color: "text-blue-500",
+        },
+        {
+          name: "modern design",
+          color: "text-purple-500",
+        },
+      ],
+      image: cinema, // Replace with your image path
+      page_link: "/MovieApp",
+    },
+    {
+      name: "Calendar",
+      description: "An event management calendar similar to Google Calendar, allowing you to organize your schedule effectively.",
+      tags: [
+        {
+          name: "calendar",
+          color: "text-green-500",
+        },
+        {
+          name: "events",
+          color: "text-blue-500",
+        },
+        {
+          name: "schedule",
+          color: "text-purple-500",
+        },
+      ],
+      image:calendar, // Replace with your image path
+      page_link: "/EventCalendar",
+    },
+    {
+      name: "Notes",
+      description: "A note-taking app, linked with MongoDB to save and manage notes efficiently. Styled with a modern, beautiful, and creative design.",
+      tags: [
+        {
+          name: "notes",
+          color: "text-yellow-500",
+        },
+        {
+          name: "mongodb",
+          color: "text-green-500",
+        },
+        {
+          name: "modern design",
+          color: "text-purple-500",
+        },
+      ],
+      image: notes, // Replace with your image path
+      page_link: "/NotesApp",
+    },
+  ];
+  
   
   
   export { services, technologies, experiences, testimonials, projects,certificates };

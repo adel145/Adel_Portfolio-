@@ -1,0 +1,1 @@
+import{j as t}from"./vendor-Toy_dwVB.js";import"./three-DNkHk5z5.js";const o=()=>t.jsxs("div",{children:[t.jsx("h1",{children:"Notes App"}),t.jsx("p",{children:"Take and manage notes with MongoDB integration."})]});export{o as default};
