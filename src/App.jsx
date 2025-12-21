@@ -1,11 +1,11 @@
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { HashRouter, Routes, Route } from "react-router-dom";
 // import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
 // import Education from "./components/Education";
 // import MyWorld from "./components/MyWorld/MyWorld"; // Import the MyWorld component
 
 // const App = () => {
 //   return (
-//     <BrowserRouter>
+//     <HashRouter>
 //       <Navbar />
 //       <Routes>
 //         {/* Route for the homepage */}
@@ -32,15 +32,16 @@
 //         {/* Route for the MyWorld page */}
 //         <Route path="/myworld" element={<MyWorld />} />
 //       </Routes>
-//     </BrowserRouter>
+//     </HashRouter>
 //   );
 // };
 
 // export default App;
 
+import { HashRouter } from "react-router-dom";
 
 import { lazy, Suspense } from 'react'; // Import lazy and Suspense
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {  Routes, Route } from "react-router-dom";
 // import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
 // import Education from "./components/Education";
 // import MyWorld from "./components/MyWorld/MyWorld";
@@ -66,7 +67,7 @@ const NotesApp = lazy(() => import("./components/MyWorld/NotesApp"));
 
 const App = () => {
   return (
-    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Navbar />
       <Routes future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         {/* Route for the homepage */}
@@ -98,7 +99,7 @@ const App = () => {
         <Route path="/event-calendar" element={<EventCalendar />} />
         <Route path="/notes-app" element={<NotesApp />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
