@@ -61,15 +61,15 @@ const MyWorld = () => {
     setActivePage(page);
   };
 
-  const renderActivePage = () => {
-    switch (activePage) {
-      case "/MovieApp":
-        return <MovieApp />; // Render the MovieApp component
-      // Add cases for other pages if needed
-      default:
-        return null;
-    }
-  };
+  // const renderActivePage = () => {
+  //   switch (activePage) {
+  //     case "movieapp":
+  //       return <MovieApp />; // Render the MovieApp component
+  //     // Add cases for other pages if needed
+  //     default:
+  //       return null;
+  //   }
+  // };
 
   return (
     <div className="myworld-container pt-40">
@@ -103,7 +103,7 @@ const MyWorld = () => {
       </div>
 
       {/* Render the active page */}
-      {renderActivePage()}
+      {/* {renderActivePage()} */}
     </div>
   );
 };

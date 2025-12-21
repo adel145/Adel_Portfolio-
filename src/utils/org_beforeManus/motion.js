@@ -18,14 +18,14 @@
 export const textVariant = (delay = 0) => ({
   hidden: {
     opacity: 0,
-    y: 30, // Reduced from 50px to 30px for faster animation
+    y: 50, // Start 50px below
   },
   show: {
     opacity: 1,
     y: 0, // Move to original position
     transition: {
       type: 'spring', // Smooth spring animation
-      duration: 0.8, // Reduced from 1.2 to 0.8
+      duration: 1.2, // Animation duration
       delay, // Delay before animation starts
     },
   },
@@ -34,8 +34,8 @@ export const textVariant = (delay = 0) => ({
   export const fadeIn = (direction, type, delay, duration) => {
     return {
       hidden: {
-        x: direction === "left" ? 50 : direction === "right" ? -50 : 0,
-        y: direction === "up" ? 50 : direction === "down" ? -50 : 0,
+        x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
+        y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
         opacity: 0,
       },
       show: {
@@ -45,7 +45,7 @@ export const textVariant = (delay = 0) => ({
         transition: {
           type: type,
           delay: delay,
-          duration: duration * 0.8, // Reduced duration by 20%
+          duration: duration,
           ease: "easeOut",
         },
       },
@@ -55,7 +55,7 @@ export const textVariant = (delay = 0) => ({
   export const zoomIn = (delay, duration) => {
     return {
       hidden: {
-        scale: 0.8,
+        scale: 0,
         opacity: 0,
       },
       show: {
@@ -64,7 +64,7 @@ export const textVariant = (delay = 0) => ({
         transition: {
           type: "tween",
           delay: delay,
-          duration: duration * 0.7, // Reduced duration by 30%
+          duration: duration,
           ease: "easeOut",
         },
       },
@@ -74,8 +74,8 @@ export const textVariant = (delay = 0) => ({
   export const slideIn = (direction, type, delay, duration) => {
     return {
       hidden: {
-        x: direction === "left" ? "-50%" : direction === "right" ? "50%" : 0,
-        y: direction === "up" ? "50%" : direction === "down" ? "50%" : 0,
+        x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
+        y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
       },
       show: {
         x: 0,
@@ -83,7 +83,7 @@ export const textVariant = (delay = 0) => ({
         transition: {
           type: type,
           delay: delay,
-          duration: duration * 0.75, // Reduced duration by 25%
+          duration: duration,
           ease: "easeOut",
         },
       },
@@ -95,8 +95,8 @@ export const textVariant = (delay = 0) => ({
       hidden: {},
       show: {
         transition: {
-          staggerChildren: staggerChildren * 0.8, // Reduced stagger time by 20%
-          delayChildren: delayChildren * 0.8 || 0, // Reduced delay by 20%
+          staggerChildren: staggerChildren,
+          delayChildren: delayChildren || 0,
         },
       },
     };

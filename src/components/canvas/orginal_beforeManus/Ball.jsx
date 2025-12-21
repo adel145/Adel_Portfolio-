@@ -10,11 +10,11 @@ const Ball = (props) => {
   const [decal] = useTexture([props.imgUrl]); // Load the texture
 
   return (
-    <Float speed={1.5} rotationIntensity={0.8} floatIntensity={1.5}>
-      <ambientLight intensity={0.2} />
-      <directionalLight position={[0, 0, 0.05]} intensity={0.8} />
-      <mesh castShadow receiveShadow scale={2.5}>
-        <icosahedronGeometry args={[1, 0]} />
+    <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
+      <ambientLight intensity={0.25} />
+      <directionalLight position={[0, 0, 0.05]} />
+      <mesh castShadow receiveShadow scale={2.75}>
+        <icosahedronGeometry args={[1, 1]} />
         <meshStandardMaterial
           color="#fff8eb" // Base color
           polygonOffset // Avoid Z-fighting
@@ -31,6 +31,20 @@ const Ball = (props) => {
         <Decal
           position={[0, 0, -1]} // Back of the ball
           rotation={[0, Math.PI, 0]} // Rotate 180° on Y-axis
+          scale={[1, 1, 1]} // Adjust scale if needed
+          map={decal} // Use the same texture
+        />
+        {/* Third Decal: Left */}
+        <Decal
+          position={[-1, 0, 0]} // Left side of the ball
+          rotation={[0, Math.PI / 2, 0]} // Rotate 90° on Y-axis
+          scale={[1, 1, 1]} // Adjust scale if needed
+          map={decal} // Use the same texture
+        />
+        {/* Fourth Decal: Right */}
+        <Decal
+          position={[1, 0, 0]} // Right side of the ball
+          rotation={[0, -Math.PI / 2, 0]} // Rotate -90° on Y-axis
           scale={[1, 1, 1]} // Adjust scale if needed
           map={decal} // Use the same texture
         />

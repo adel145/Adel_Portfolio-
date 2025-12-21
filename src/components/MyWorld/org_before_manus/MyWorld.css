@@ -3,10 +3,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    height: 100vh;
     background: linear-gradient(to bottom, #1e293b, #0f172a);
     color: #ffffff;
-    padding-top: 80px; /* Adjust to match your navbar height */
   }
   
   .myworld-title {
@@ -33,5 +32,8 @@
   .myworld-btn:hover {
     background-color: #1d4ed8;
     transform: scale(1.1);
+  }
+  .myworld-container {
+    padding-top: 80px; /* Adjust to match your navbar height */
   }
   

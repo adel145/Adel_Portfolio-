@@ -20,18 +20,18 @@ const Earth = () => {
     {/* <hemisphereLight intensity={6} groundColor="black" /> */}
     {/* הוספת תאורת המיספירה עם עוצמה גבוהה וצבע קרקע שחור. */}
 
-    <hemisphereLight intensity={1} groundColor="black" skyColor="#ffffff" />
+    <hemisphereLight intensity={3} groundColor="black" skyColor="#ffffff" />
       
       {/* תאורת כיוונית */}
       <directionalLight
         position={[10, 10, 5]}
-        intensity={1}
+        intensity={1.5}
         castShadow
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
       />
     
-    <pointLight intensity={2} />
+    <pointLight intensity={20} />
     {/* הוספת תאורה נקודתית להארת הסצנה. */}
     
     
@@ -39,7 +39,7 @@ const Earth = () => {
 
     <primitive
     object={earth.scene}
-    scale={75}
+    scale={100}
     position-y={-3.5}
     rotation-y={0}/>
     {/* הצגת המודל התלת-ממדי עם קנה מידה, מיקום, וסיבוב המשתנים לפי `isMobile`. */}
