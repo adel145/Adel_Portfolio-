@@ -35,11 +35,11 @@ const About = () => {
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
         I am Adel Mohsen, a B.Sc. Computer Science student at Sapir Academic
-        College, expected to graduate in 07/2026. I focus on building real
-        products: full-stack web apps, automation workflows, data-driven tools,
-        and practical ML/AI features. My strongest work combines React, Node.js,
-        MongoDB, Python, and a product-minded approach to solving user problems
-        clearly and reliably.
+        College, with expected graduation in 07/2026. I build practical products
+        across React, Node.js, MongoDB, Python, automation, data, and ML/AI,
+        with real project experience from academic, business, and portfolio
+        systems. My strongest work combines product thinking with clear,
+        reliable engineering.
       </motion.p>
 
       <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center">

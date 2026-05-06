@@ -371,3 +371,76 @@ Remaining warnings:
 Remaining visual TODOs:
 - The available local assets for Miktsoan and Crystallia are still placeholder-style; replace them later with real high-quality screenshots when available.
 - A final human comparison against the original screenshot set is still useful for tiny spacing/crop tweaks.
+
+### 2026-05-07 Career Package Version 2 Alignment
+
+Date: 2026-05-07
+
+Goal of the session: Align the portfolio with the "Adel Career Package - ATS-Optimized CV + GitHub + LinkedIn Plan - Version 2 - After 07/2026 / Stronger Junior Version" while keeping the current working GitHub Pages setup and dark 3D visual design.
+
+Root issue:
+- The site was technically working, but several content/link details still needed recruiter-facing alignment: the CV URL included `/public`, Crystallia and Pet Shop mixed live-demo links with source-code links, the experience section needed stronger junior full-stack/AI positioning, and education/certificate wording needed safer ATS-aligned language.
+
+Experience updates:
+- Reframed independent portfolio work as `Full-Stack / AI Projects Developer` with honest project-based wording.
+- Added a dedicated `Miktsoan / Professional - Final CS Project` experience block for the academic capstone.
+- Added a dedicated `Crystallia - E-Commerce & Automation Project` block for business, automation, and product operations evidence.
+- Kept SprintCity, Welocalize, and ATRIIS because they support ownership, analytical judgment, technical support, and customer-facing experience, but rewrote them to be concise and recruiter-friendly.
+
+Education updates:
+- Kept B.Sc. Computer Science as `expected graduation in 07/2026` because the current date is before the actual graduation month.
+- Strengthened Sapir, Cydeo, and NVIDIA descriptions around software engineering, Java/backend practice, ML/AI, GPU/CUDA, and applied development workflows.
+- Added `AI-Powered Apps Development` from Udemy with a safe placeholder visual because no dedicated certificate image is currently present.
+
+Link fixes:
+- Fixed the CV PDF path to `/Adel_Portfolio-/Adel-Mohsen-CV-Resume_2026_v1.pdf`.
+- Set Crystallia `live_demo_link` to `https://www.crystalliaworld.com/` and left `source_code_link` empty because no public source repo was confirmed.
+- Kept Miktsoan source at `https://github.com/adel145/FinalProject26_2` and left its live demo empty because no valid live demo URL was confirmed.
+- Kept the Pet Shop GitHub Pages demo as the live link and left source empty because no separate public source repo was confirmed.
+- Added safer project/certificate link rendering so empty or non-HTTPS URLs do not render broken buttons.
+
+Files changed:
+- `src/constants/index.js`
+- `src/components/Hero.jsx`
+- `src/components/About.jsx`
+- `src/components/Works.jsx`
+- `src/components/Education.jsx`
+- `README.md`
+- `package.json`
+- `package-lock.json`
+- `CODEX.MD`
+
+Commands run:
+- `rg` scans for bad CV paths, old package name, localhost/API references, MongoDB URI, and known secret strings.
+- `Test-Path public\Adel-Mohsen-CV-Resume_2026_v1.pdf`
+- `npm.cmd run build`
+- `npm.cmd run preview -- --host 127.0.0.1` via `Start-Process`
+- `Invoke-WebRequest` checks for:
+  - `http://127.0.0.1:4173/Adel_Portfolio-/`
+  - `http://127.0.0.1:4173/Adel_Portfolio-/Adel-Mohsen-CV-Resume_2026_v1.pdf`
+  - `http://127.0.0.1:4173/Adel_Portfolio-/#/myworld`
+- Headless Chrome DevTools route checks for:
+  - `http://127.0.0.1:4173/Adel_Portfolio-/`
+  - `http://127.0.0.1:4173/Adel_Portfolio-/#/myworld`
+  - `http://127.0.0.1:4173/Adel_Portfolio-/#/todo`
+  - `http://127.0.0.1:4173/Adel_Portfolio-/#/movie-app`
+  - `http://127.0.0.1:4173/Adel_Portfolio-/#/event-calendar`
+  - `http://127.0.0.1:4173/Adel_Portfolio-/#/notes-app`
+
+Build/preview result:
+- `npm.cmd run build` passed.
+- Preview served the production build at `/Adel_Portfolio-/`.
+- The CV PDF returned `200 application/pdf` at the fixed GitHub Pages-safe URL.
+- Browser route checks rendered expected content on home, MyWorld, and all MyWorld demo routes.
+- No empty anchor links, runtime exceptions, or `console.error` entries were captured in the browser route check.
+
+Remaining warnings:
+- Browserslist/caniuse-lite data is outdated.
+- `three-stdlib/libs/lottie.js` still reports an eval warning during build.
+- The raw `three` chunk remains larger than Vite's default 500 kB warning threshold.
+
+Remaining TODOs:
+- After the actual July 2026 graduation is confirmed, switch B.Sc. wording from `expected graduation in 07/2026` / `Expected2026` to graduated language.
+- Replace the Udemy placeholder visual with a real certificate image if one is available.
+- Add a valid Miktsoan live demo URL only if one exists.
+- Add a Pet Shop source-code URL only if a separate public repo is confirmed.

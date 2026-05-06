@@ -8,6 +8,8 @@ import { styles } from "../styles";
 import { fadeIn, textVariant } from "../utils/motion";
 import LazyImage from "./LazyImage";
 
+const isValidExternalLink = (url) => /^https?:\/\//.test(url ?? "");
+
 const ProjectCard = ({
   index,
   name,
@@ -19,6 +21,9 @@ const ProjectCard = ({
   live_demo_link,
 }) => {
   const useImagePreview = ["Tips Predictor", "Pet Shop E-Commerce"].includes(name);
+  const sourceLink = isValidExternalLink(source_code_link) ? source_code_link : "";
+  const liveLink = isValidExternalLink(live_demo_link) ? live_demo_link : "";
+  const displayName = name.split(" / ")[0];
 
   return (
     <motion.div className="h-full" variants={fadeIn("up", "spring", index * 0.15, 0.75)} style={{ willChange: "transform, opacity" }}>
@@ -29,7 +34,7 @@ const ProjectCard = ({
           ) : (
             <div className="project-visual-panel h-full w-full">
               <span>{status}</span>
-              <strong>{name.replace(" / מקצוען", "")}</strong>
+              <strong>{displayName}</strong>
             </div>
           )}
           <span className="absolute top-3 left-3 rounded-md bg-primary/90 border border-white/10 px-3 py-1 text-[12px] font-semibold text-white">
@@ -51,9 +56,9 @@ const ProjectCard = ({
         </div>
 
         <div className="mt-5 flex gap-3 pt-1">
-          {source_code_link && (
+          {sourceLink && (
             <a
-              href={source_code_link}
+              href={sourceLink}
               target="_blank"
               rel="noreferrer"
               aria-label={`Open ${name} source code`}
@@ -62,9 +67,9 @@ const ProjectCard = ({
               <LazyImage src={github} alt="" className="w-1/2 h-1/2 object-contain" />
             </a>
           )}
-          {live_demo_link && (
+          {liveLink && (
             <a
-              href={live_demo_link}
+              href={liveLink}
               target="_blank"
               rel="noreferrer"
               aria-label={`Open ${name} live demo`}

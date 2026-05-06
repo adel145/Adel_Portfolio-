@@ -29,7 +29,12 @@ const Hero = () => {
             Hi, I&apos;m <span className="text-[#915eff]">Adel</span>
           </h1>
           <p className={`${styles.heroSubText} mt-3 text-white-100 max-w-2xl`}>
-            I build practical full-stack, automation, data, and AI-powered applications.
+            Full-Stack & AI-Powered Apps Developer.
+          </p>
+          <p className="mt-3 max-w-3xl text-secondary text-[16px] sm:text-[18px] leading-7">
+            I build practical products across React, Node.js, automation, data, and ML/AI,
+            with real project experience from academic, business, and portfolio systems.
+            Expected B.Sc. graduation: 07/2026.
           </p>
 
           <div className="mt-7 flex flex-wrap gap-3">

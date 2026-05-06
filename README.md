@@ -6,6 +6,22 @@ Modern React/Vite portfolio for Adel Mohsen, B.Sc. Computer Science student at S
 
 ![Portfolio homepage](./1homepage.png)
 
+## Career Focus
+
+- Junior Full-Stack Developer
+- Automation Developer
+- Data / ML Engineer
+- AI-Powered Apps Developer
+
+CV PDF: https://adel145.github.io/Adel_Portfolio-/Adel-Mohsen-CV-Resume_2026_v1.pdf
+
+Main project highlights:
+
+- Miktsoan / Professional: final Computer Science full-stack AI capstone
+- Crystallia: e-commerce, automation, and product operations project
+- Tips Predictor: Python machine learning and data analysis project
+- Portfolio Website: React, Vite, Tailwind, Framer Motion, and Three.js portfolio
+
 ## Tech Stack
 
 - React 18 and Vite

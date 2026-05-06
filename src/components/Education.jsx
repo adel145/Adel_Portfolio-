@@ -8,24 +8,30 @@ import { styles } from "../styles";
 import { fadeIn, textVariant } from "../utils/motion";
 import LazyImage from "./LazyImage";
 
+const isValidExternalLink = (url) => /^https?:\/\//.test(url ?? "");
+
 const CertificateCard = ({ index, name, college, description, tags, image, source_code_link }) => {
+  const certificateLink = isValidExternalLink(source_code_link) ? source_code_link : "";
+
   return (
     <motion.div className="h-full" variants={fadeIn("up", "spring", index * 0.15, 0.75)} style={{ willChange: "transform, opacity" }}>
       <Tilt options={{ max: 18, scale: 1, speed: 450 }} className="portfolio-card bg-tertiary p-5 rounded-lg sm:w-[350px] w-full min-h-[500px] flex flex-col">
         <div className="relative w-full h-[215px] rounded-lg overflow-hidden bg-[#0b0820] border border-white/5 flex items-center justify-center">
           <LazyImage src={image} alt={`${name} certificate`} className="w-full h-full object-contain p-5" loading="lazy" />
 
-          <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-            <a
-              href={source_code_link}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`Open ${name} certificate link`}
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center"
-            >
-              <LazyImage src={visit} alt="" className="w-1/2 h-1/2 object-contain" loading="lazy" />
-            </a>
-          </div>
+          {certificateLink && (
+            <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
+              <a
+                href={certificateLink}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Open ${name} certificate link`}
+                className="black-gradient w-10 h-10 rounded-full flex justify-center items-center"
+              >
+                <LazyImage src={visit} alt="" className="w-1/2 h-1/2 object-contain" loading="lazy" />
+              </a>
+            </div>
+          )}
         </div>
 
         <div className="mt-5 flex-1">
