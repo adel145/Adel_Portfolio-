@@ -31,7 +31,7 @@ export const profileLinks = {
   github: "https://github.com/adel145",
   linkedin: "https://www.linkedin.com/in/adel-mohsen-9702aa15b/",
   email: "mailto:adelmohsen145@gmail.com",
-  cv: "/Adel_Portfolio-/public/Adel-Mohsen-CV-Resume_2026_v1.pdf",
+  cv: "https://drive.google.com/file/d/1VQltCUnXzyQwG5-n9xPpmp1BnYWDP8BG/view?usp=sharingf",
 
 };
 
