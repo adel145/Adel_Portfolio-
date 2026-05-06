@@ -19,8 +19,7 @@ module.exports = {
         xs: "450px",
       },
       backgroundImage: {
-        "hero-pattern": "url('src/assets/pexels-felixmittermeier-956999.jpg')",
-        
+        "hero-pattern": "linear-gradient(135deg, rgba(5, 8, 22, 0.94), rgba(16, 13, 37, 0.72)), url('/src/assets/herobg.webp')",
       },
     },
   },

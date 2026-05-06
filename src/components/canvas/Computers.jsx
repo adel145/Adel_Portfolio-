@@ -20,8 +20,8 @@ const Computers = ({ isMobile }) => {
       <pointLight intensity={0.8} />
       <primitive
         object={computer.scene}
-        scale={isMobile ? 0.7 : 0.75}
-        position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
+        scale={isMobile ? 0.7 : 0.95}
+        position={isMobile ? [0, -3, -2.2] : [0, -3.45, -1.55]}
         rotation={[-0.01, -0.2, -0.1]}
       />
     </mesh>
@@ -52,13 +52,21 @@ const ComputersCanvas = () => {
     };
   }, []);
 
+  if (isMobile) {
+    return (
+      <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
+        <div className="mb-24 h-44 w-44 rounded-full border border-[#915eff]/40 bg-[#151030]/70 shadow-[0_0_80px_rgba(145,94,255,0.35)]" />
+      </div>
+    );
+  }
+
   return (
     <Canvas
-    frameloop="demand" 
-
+      className="w-full h-full"
+      frameloop="demand"
       shadows
       dpr={[1, 2]}
-      camera={{ position: [20, 3, 5], fov: 25 }}
+      camera={{ position: [20, 3, 5], fov: 24 }}
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>

@@ -1,37 +1,22 @@
-import React from "react";
-import {Tilt} from "react-tilt";//use it to tilt the cards إمالة البطاقات
+import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
-import { styles } from "../styles";
 import { services } from "../constants";
 import { SectionWrapper } from "../hoc";
+import { styles } from "../styles";
 import { fadeIn, textVariant } from "../utils/motion";
 import LazyImage from "./LazyImage";
 
 const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className='xs:w-[250px] w-full'>
+  <Tilt className="xs:w-[250px] w-full">
     <motion.div
-      variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-      style={{ willChange: 'transform, opacity' }}
-      className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
+      variants={fadeIn("right", "spring", index * 0.2, 0.65)}
+      style={{ willChange: "transform, opacity" }}
+      className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
     >
-      <div
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
-      >
-        <LazyImage
-          src={icon}
-          alt='web-development'
-          className='w-16 h-16 object-contain'
-        />
-
-        <h3 className='text-white text-[20px] font-bold text-center'>
-          {title}
-        </h3>
+      <div className="bg-tertiary rounded-[20px] py-5 px-8 min-h-[240px] flex justify-evenly items-center flex-col">
+        <LazyImage src={icon} alt={title} className="w-16 h-16 object-contain" />
+        <h3 className="text-white text-[20px] font-bold text-center">{title}</h3>
       </div>
     </motion.div>
   </Tilt>
@@ -45,19 +30,19 @@ const About = () => {
         <h2 className={styles.sectionHeadText}>Overview.</h2>
       </motion.div>
 
-      <motion.p 
-    variants={fadeIn("","",0.1,1)}
-    className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'>
+      <motion.p
+        variants={fadeIn("", "", 0.1, 1)}
+        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+      >
+        I am Adel Mohsen, a B.Sc. Computer Science student at Sapir Academic
+        College, expected to graduate in 07/2026. I focus on building real
+        products: full-stack web apps, automation workflows, data-driven tools,
+        and practical ML/AI features. My strongest work combines React, Node.js,
+        MongoDB, Python, and a product-minded approach to solving user problems
+        clearly and reliably.
+      </motion.p>
 
-    I’m Adel Mohsen, a Computer Science student with a passion for creating efficient,
-     user-friendly solutions. Proficient in many programming languages and frameworks like React and Node.js,
-      I specialize in solving real-world problems through innovative design.
-       I’m a quick learner who values collaboration, working closely with clients to deliver impactful projects.
-        With a strong interest in machine learning and data science, 
-        I’m driven to explore how technology can shape smarter, more connected systems.
-    </motion.p>
-
-      <div className='mt-20 flex flex-wrap gap-10'>
+      <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

@@ -1,72 +1,93 @@
-import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+
+import { close, logo, menu } from "../assets";
+import { navLinks, profileLinks } from "../constants";
 import { styles } from "../styles";
-import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
 
 const Navbar = () => {
-  const [active, setActive] = useState('');
+  const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
 
+  const handleNavClick = (title, id) => {
+    setActive(title);
+    setToggle(false);
+    window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
+
   return (
-    <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}>
-      <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
-        {/* Logo and Title */}
+    <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary/95 backdrop-blur-sm`}>
+      <div className="w-full flex justify-between items-center max-w-7xl mx-auto gap-5">
         <RouterLink
           to="/"
-          className='flex items-center gap-2'
+          className="flex items-center gap-2 min-w-0"
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0);
-          }}>
-          <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className='text-white text-[18px] font-bold cursor-pointer flex'>
-            Adel Mohsen &nbsp; <span className='sm:block hidden'>| Computer Science Engineer</span>
+          }}
+        >
+          <img src={logo} alt="Adel Mohsen logo" className="w-9 h-9 object-contain" />
+          <p className="text-white text-[16px] sm:text-[18px] font-bold cursor-pointer truncate">
+            Adel Mohsen <span className="xl:inline hidden">| CS Student & Full-Stack AI Developer</span>
           </p>
         </RouterLink>
 
-        {/* Navigation Links for Desktop */}
-        <ul className="list-none hidden sm:flex flex-row gap-10">
+        <ul className="list-none hidden lg:flex flex-row gap-8">
           {navLinks.map((nav) => (
             <li
               key={nav.id}
-              className={`${active === nav.title ? "text-white" : "text-secondary"} hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
+              className={`${active === nav.title ? "text-white" : "text-secondary"} hover:text-white text-[16px] font-medium cursor-pointer`}
+              onClick={() => handleNavClick(nav.title, nav.id)}
             >
-              <a href={`#${nav.id}`}>{nav.title}</a>
+              <RouterLink to="/">{nav.title}</RouterLink>
             </li>
           ))}
         </ul>
 
-        {/* MyWorld Button */}
-        <RouterLink to="/myworld">
-          <button className="bg-secondary text-white px-4 py-2 rounded-md hover:bg-white hover:text-primary transition duration-200 ml-4">
+        <div className="hidden md:flex items-center gap-3 shrink-0">
+          <a
+            href={profileLinks.github}
+            target="_blank"
+            rel="noreferrer"
+            className="text-secondary hover:text-white text-[15px] font-medium"
+          >
+            GitHub
+          </a>
+          <RouterLink
+            to="/myworld"
+            className="navbar-world-link bg-secondary text-primary px-4 py-2 rounded-md hover:bg-white transition duration-200 font-semibold"
+          >
             MyWorld
-          </button>
-        </RouterLink>
+          </RouterLink>
+        </div>
 
-        {/* Mobile Menu */}
-        <div className='sm:hidden flex flex-1 justify-end items-center'>
-          <img
-            src={toggle ? close : menu}
-            alt='menu'
-            className='w-[28px] h-[28px] object-contain cursor-pointer'
-            onClick={() => setToggle(!toggle)}
-          />
-          <div className={` ${!toggle ? "hidden" : "flex"} p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
+        <div className="lg:hidden flex flex-1 justify-end items-center">
+          <button type="button" aria-label="Toggle navigation menu" onClick={() => setToggle(!toggle)}>
+            <img src={toggle ? close : menu} alt="" className="w-[28px] h-[28px] object-contain" />
+          </button>
+          <div className={`${!toggle ? "hidden" : "flex"} p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[210px] max-w-[calc(100vw-2rem)] z-10 rounded-lg`}>
             <ul className="list-none flex justify-end items-start flex-col gap-4">
               {navLinks.map((nav) => (
                 <li
                   key={nav.id}
                   className={`${active === nav.title ? "text-white" : "text-secondary"} font-poppins font-medium cursor-pointer text-[16px]`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }}
+                  onClick={() => handleNavClick(nav.title, nav.id)}
                 >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
+                  <RouterLink to="/">{nav.title}</RouterLink>
                 </li>
               ))}
+              <li>
+                <a className="text-secondary font-medium text-[16px]" href={profileLinks.github} target="_blank" rel="noreferrer">
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <RouterLink className="text-secondary font-medium text-[16px]" to="/myworld" onClick={() => setToggle(false)}>
+                  MyWorld
+                </RouterLink>
+              </li>
             </ul>
           </div>
         </div>

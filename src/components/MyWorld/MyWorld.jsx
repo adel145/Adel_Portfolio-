@@ -1,38 +1,24 @@
-import React, { useState } from "react";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
-import { styles } from "../../styles"; // Adjusted relative path
-import { pages } from "../../constants"; // Adjusted relative path
-import { fadeIn, textVariant } from "../../utils/motion"; // Adjusted relative path
 import { useNavigate } from "react-router-dom";
+
+import { pages } from "../../constants";
+import { styles } from "../../styles";
+import { fadeIn, textVariant } from "../../utils/motion";
 import LazyImage from "../LazyImage";
-import MovieApp from "./MovieApp"; // Import the MovieApp component
 
 const PageCard = ({ index, name, description, tags, image, onClick }) => {
   return (
-    <motion.div
-      variants={fadeIn("up", "spring", index * 0.5, 0.75)}
-      style={{ willChange: "transform, opacity" }}
-    >
-      <Tilt
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className="bg-tertiary p-5 rounded-2xl sm:w-[300px] w-full"
-      >
-        <div className="relative w-full h-[230px]">
-          <LazyImage
-            src={image}
-            alt={name}
-            className="w-full h-full object-cover rounded-2xl"
-          />
+    <motion.div className="h-full w-full" variants={fadeIn("up", "spring", index * 0.15, 0.75)} style={{ willChange: "transform, opacity" }}>
+      <Tilt options={{ max: 18, scale: 1, speed: 450 }} className="portfolio-card bg-tertiary p-5 rounded-lg w-full min-h-[480px] flex flex-col">
+        <div className="myworld-preview relative w-full h-[215px] rounded-lg overflow-hidden">
+          <div className="myworld-preview-backdrop" />
+          <LazyImage src={image} alt={`${name} demo preview`} className="relative z-10 w-24 h-24 object-contain" />
         </div>
 
-        <div className="mt-5">
-          <h3 className="text-white text-[19px] font-bold">{name}</h3>
-          <p className="mt-2 text-secondary text-[14px]">{description}</p>
+        <div className="mt-5 flex-1">
+          <h3 className="text-white text-[21px] font-bold leading-tight">{name}</h3>
+          <p className="mt-3 text-secondary text-[14px] leading-6">{description}</p>
         </div>
 
         <div className="mt-4 flex flex-wrap gap-2">
@@ -45,9 +31,9 @@ const PageCard = ({ index, name, description, tags, image, onClick }) => {
 
         <button
           onClick={onClick}
-          className="mt-4 bg-secondary text-white px-4 py-2 rounded-md hover:bg-white hover:text-primary transition duration-200"
+          className="mt-5 bg-secondary text-primary px-4 py-2 rounded-md hover:bg-white transition duration-200 font-semibold"
         >
-          Visit Page
+          Open Demo
         </button>
       </Tilt>
     </motion.div>
@@ -55,56 +41,38 @@ const PageCard = ({ index, name, description, tags, image, onClick }) => {
 };
 
 const MyWorld = () => {
-  const [activePage, setActivePage] = useState(null);
-
-  const handlePageClick = (page) => {
-    setActivePage(page);
-  };
-
-  const renderActivePage = () => {
-    switch (activePage) {
-      case "/MovieApp":
-        return <MovieApp />; // Render the MovieApp component
-      // Add cases for other pages if needed
-      default:
-        return null;
-    }
-  };
+  const navigate = useNavigate();
 
   return (
-    <div className="myworld-container pt-40">
-      <motion.div
-        variants={textVariant()}
-        style={{ willChange: "transform, opacity" }}
-      >
-        <p className={styles.sectionSubText}>Explore.</p>
-        <h2 className={styles.sectionHeadText}>My World.</h2>
-      </motion.div>
+    <main className="myworld-page pt-36 pb-20 bg-primary min-h-screen">
+      <section className="max-w-7xl mx-auto px-6 sm:px-16">
+        <motion.div variants={textVariant()} style={{ willChange: "transform, opacity" }}>
+          <p className={styles.sectionSubText}>Explore.</p>
+          <h2 className={styles.sectionHeadText}>My World.</h2>
+        </motion.div>
 
-      <div className="w-full flex">
-        <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
-          className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
-        >
-          Welcome to MyWorld! Here you can explore various sections and pages
-          about my journey, work, and interests.
-        </motion.p>
-      </div>
+        <div className="w-full flex">
+          <motion.p
+            variants={fadeIn("", "", 0.1, 1)}
+            className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
+          >
+            A small gallery of polished browser demos, experiments, and everyday tools
+            that show how I think about practical product interfaces.
+          </motion.p>
+        </div>
 
-      <div className="mt-20 flex flex-wrap gap-7">
-        {pages.map((page, index) => (
-          <PageCard
-            key={`page-${index}`}
-            index={index}
-            {...page}
-            onClick={() => handlePageClick(page.page_link)}
-          />
-        ))}
-      </div>
-
-      {/* Render the active page */}
-      {renderActivePage()}
-    </div>
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7 justify-items-stretch">
+          {pages.map((page, index) => (
+            <PageCard
+              key={page.name}
+              index={index}
+              {...page}
+              onClick={() => navigate(page.page_link)}
+            />
+          ))}
+        </div>
+      </section>
+    </main>
   );
 };
 

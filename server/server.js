@@ -1,44 +1,42 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+/*
+ * Archived local demo server.
+ *
+ * The live portfolio is deployed to GitHub Pages as a static Vite app and does
+ * not depend on this Express/MongoDB code. If this server is used locally, copy
+ * .env.example to a private .env file and provide your own MONGO_URI. Never
+ * commit a real database URI, password, token, or API key.
+ */
+
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
 
 const app = express();
-const port = 5000; // Use port consistently
+const port = process.env.PORT || 5000;
+const mongoUri = process.env.MONGO_URI;
 
 app.use(cors());
 app.use(express.json());
 
-const MONGO_URI = 'mongodb+srv://adel145:adel145@cluster0.zzbywqf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((error) => console.error('Error connecting to MongoDB:', error));
+if (!mongoUri) {
+  console.warn("MONGO_URI is not configured. Archived demo API will run without a database connection.");
+} else {
+  mongoose
+    .connect(mongoUri)
+    .then(() => console.log("Connected to MongoDB"))
+    .catch((error) => console.error("Error connecting to MongoDB:", error));
+}
 
-// Task schema and model
 const taskSchema = new mongoose.Schema({
   text: { type: String, required: true },
   completed: { type: Boolean, default: false },
   importance: { type: Number, default: 1 },
 });
-const Task = mongoose.model('Task', taskSchema, 'todo_tasks');
+const Task = mongoose.model("Task", taskSchema, "todo_tasks");
 
-// Movie schema and model
-const movieSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  type: { type: String, required: true },
-  embedCode: { type: String, required: true },
-  thumbnail: { type: String, required: true }, // Add thumbnail URL
-  description: { type: String, required: false }, // Add description
-  category: { type: String, enum: ['movie', 'series'], required: true }, // Add category
-  url: { type: String, required: true }, // Add video URL
-});
+app.get("/api/tasks", async (_req, res) => {
+  if (!mongoUri) return res.status(503).json({ message: "Database is not configured." });
 
-const Movie = mongoose.model("Movie", movieSchema, "movies");
-
-
-
-// Task routes
-app.get("/api/tasks", async (req, res) => {
   try {
     const tasks = await Task.find();
     res.json(tasks);
@@ -48,6 +46,8 @@ app.get("/api/tasks", async (req, res) => {
 });
 
 app.post("/api/tasks", async (req, res) => {
+  if (!mongoUri) return res.status(503).json({ message: "Database is not configured." });
+
   try {
     const newTask = new Task(req.body);
     await newTask.save();
@@ -58,6 +58,8 @@ app.post("/api/tasks", async (req, res) => {
 });
 
 app.put("/api/tasks/:id", async (req, res) => {
+  if (!mongoUri) return res.status(503).json({ message: "Database is not configured." });
+
   try {
     const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updatedTask);
@@ -67,91 +69,14 @@ app.put("/api/tasks/:id", async (req, res) => {
 });
 
 app.delete("/api/tasks/:id", async (req, res) => {
+  if (!mongoUri) return res.status(503).json({ message: "Database is not configured." });
+
   try {
     await Task.findByIdAndDelete(req.params.id);
     res.status(204).end();
-  } catch (error) {
-    res.status(500).json({ error: 'Error deleting task' });
+  } catch (_error) {
+    res.status(500).json({ error: "Error deleting task" });
   }
 });
 
-// Movie routes
-
-
-app.post('/api/movies', async (req, res) => {
-  const { title, type, embedCode, thumbnail, description, category, url } = req.body;
-
-  if (!title || !type || !embedCode || !thumbnail || !description || !category || !url) {
-    return res.status(400).json({ message: 'All fields are required.' });
-  }
-
-  try {
-    const newMovie = new Movie({ title, type, embedCode, thumbnail, description, category, url });
-    await newMovie.save();
-    res.status(201).json(newMovie);
-  } catch (error) {
-    console.error('Error saving movie:', error.message);
-    res.status(500).json({ message: 'Internal Server Error' });
-  }
-});
-
-// Fetch all movies
-app.get('/api/movies', async (req, res) => {
-  try {
-    const movies = await Movie.find({ category: 'movie' }); // Filter by category
-    res.json(movies);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// Fetch all series
-app.get('/api/series', async (req, res) => {
-  try {
-    const series = await Movie.find({ category: 'series' }); // Filter by category
-    res.json(series);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// Fetch a specific movie or series by ID
-app.get('/api/videos/:id', async (req, res) => {
-  try {
-    const video = await Movie.findById(req.params.id);
-    if (!video) {
-      return res.status(404).json({ message: 'Video not found' });
-    }
-    res.json(video);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// Search movies and series by title
-app.get('/api/search', async (req, res) => {
-  const { query } = req.query; // Get search query from URL params
-
-  if (!query) {
-    return res.status(400).json({ message: 'Search query is required' });
-  }
-
-  try {
-    const results = await Movie.find({
-      title: { $regex: query, $options: 'i' }, // Case-insensitive search
-    });
-    res.json(results);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// Start the server
-app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
-
-
-
-
-
-
-
+app.listen(port, () => console.log(`Archived demo server running on port ${port}`));

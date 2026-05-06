@@ -1,39 +1,77 @@
-# Visit: [https://adel145.github.io/Adel_Portfolio-/](https://adel145.github.io/Adel_Portfolio-/)
+# Adel Mohsen | Full-Stack & AI Developer Portfolio
 
-## If the website is under construction, you can check out this YouTube video in the meantime:
+Live demo: https://adel145.github.io/Adel_Portfolio-/
 
-[<img src="youtube.png" alt="YouTube Icon" width="20" height="20"> Watch on YouTube](https://www.youtube.com/watch?v=NkZpJRHknQc)
+Modern React/Vite portfolio for Adel Mohsen, B.Sc. Computer Science student at Sapir Academic College, expected graduation 07/2026. The site is focused on junior / entry-level full-stack, automation, data, and AI-powered apps roles.
 
----
+![Portfolio homepage](./1homepage.png)
 
-### Below are 7 screenshots that showcase different sections of my portfolio website:
+## Tech Stack
 
-### Home Page section:
+- React 18 and Vite
+- Tailwind CSS
+- Framer Motion
+- Three.js with React Three Fiber / Drei
+- EmailJS with Vite environment variables
+- GitHub Actions and GitHub Pages
 
-![Screenshot 1](1homepage.png)
+## Features
 
-### Overview section:
-![Screenshot 2](2_overview.png)
+- Dark technical visual identity with lightweight 3D sections
+- HashRouter routing that works on GitHub Pages
+- Static/client-only demo pages for ToDo, Notes, Calendar, and MovieApp
+- Recruiter-friendly project cards with status badges, tech stacks, GitHub links, and live demo links where available
+- SEO metadata and accessible form labels/buttons
+- GitHub Actions deployment from `dist` artifact, without committing build output
 
-### Work Experience section:
-![Screenshot 2](3Work_Experience.png)
+## Performance Notes
 
-### Education section:
-![Screenshot 4](4Education.png)
+- Removed committed `dist` files and duplicated original assets/backups from the source branch
+- Removed backend-only and unused frontend dependencies from the Vite app
+- Lazy-loaded major page sections and 3D canvas components
+- Added a lightweight mobile fallback for the heaviest hero 3D model
+- Converted backend-dependent demos to localStorage/static data so GitHub Pages has no broken API calls
 
-### Projects section:
-![Screenshot 5](5projects.png)
+## Local Setup
 
-### Contact section:
-![Screenshot 6](6contact.png)
+```bash
+npm install
+npm run dev
+npm run build
+npm run preview
+```
 
-### myWorld Page :
-![Screenshot 7](7myWorld.png)
+EmailJS is optional. To enable the contact form locally or in deployment, copy `.env.example` to `.env` and fill in:
 
-###                  THANK YOU          
+```bash
+VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+```
 
+Do not commit `.env`.
 
+## GitHub Pages Deployment
 
+This repository is configured for GitHub Pages at:
 
+```js
+base: "/Adel_Portfolio-/"
+```
 
+Deployment uses `.github/workflows/deploy.yml`.
 
+Manual GitHub setting:
+
+1. Open the repository on GitHub.
+2. Go to Settings -> Pages.
+3. Set Source to GitHub Actions.
+4. Push to `main`.
+
+GitHub Actions will install dependencies, build the Vite app, upload `dist`, and deploy it to GitHub Pages.
+
+## Security
+
+The live portfolio is static and does not depend on `server/server.js`.
+
+The `server` folder is archived local demo code only. It no longer contains a real MongoDB URI. If any secret was previously committed or exposed, rotate it immediately in the original provider dashboard, including MongoDB credentials and EmailJS keys.
