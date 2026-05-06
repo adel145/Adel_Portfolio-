@@ -31,7 +31,8 @@ export const profileLinks = {
   github: "https://github.com/adel145",
   linkedin: "https://www.linkedin.com/in/adel-mohsen-9702aa15b/",
   email: "mailto:adelmohsen145@gmail.com",
-  cv: "https://www.linkedin.com/in/adel-mohsen-9702aa15b/",
+  cv: "/Adel_Portfolio-/public/Adel-Mohsen-CV-Resume_2026_v1.pdf",
+
 };
 
 export const navLinks = [
@@ -148,7 +149,7 @@ const projects = [
       { name: "ai", color: "pink-text-gradient" },
     ],
     image: visit,
-    source_code_link: "https://github.com/adel145",
+    source_code_link: "https://github.com/adel145/FinalProject26_2",
     live_demo_link: "",
   },
   {
@@ -163,7 +164,7 @@ const projects = [
       { name: "automation", color: "orange-text-gradient" },
     ],
     image: backend,
-    source_code_link: "https://github.com/adel145",
+    source_code_link: "www.crystalliaworld.com",
     live_demo_link: "",
   },
   {
