@@ -569,3 +569,89 @@ Remaining issues:
 
 Next recommended steps:
 - Optional real-browser visual check before pushing.
+
+### 2026-05-07 Constants Text Cleanup
+
+Date: 2026-05-07
+
+Goal of the session: Fix the visible errors in `src/constants/index.js`.
+
+Summary of changes:
+- Replaced the `Miktsoan / מקצוען` labels with ASCII `Miktsoan / Professional` labels to avoid editor/encoding display issues while preserving the project meaning.
+- Kept all profile, CV, project, and demo links unchanged.
+
+Files changed:
+- `src/constants/index.js`
+- `CODEX.MD`
+
+Commands run:
+- `Get-Content src/constants/index.js`
+- `rg "Miktsoan|מקצוען|×" src/constants/index.js`
+- `npm.cmd run build`
+- `npm.cmd run lint`
+
+Build/test result:
+- `npm.cmd run build` passed.
+- `npm.cmd run lint` still reports pre-existing unrelated lint errors in other files, mainly React Three Fiber JSX props flagged by `react/no-unknown-property`, unused React imports, and `tailwind.config.js` `module` global.
+
+Remaining issues:
+- Existing lint configuration/errors outside `src/constants/index.js` remain.
+
+Next recommended steps:
+- Fix lint configuration for React Three Fiber and CommonJS config files in a separate pass if lint cleanliness is needed.
+
+### 2026-05-07 Render Error And Performance Pass
+
+Date: 2026-05-07
+
+Goal of the session: Fix the `Something went wrong while rendering the page` fallback and make the site faster without changing GitHub Pages routing or the portfolio design.
+
+Root cause:
+- `src/constants/index.js` imported `CRYSTALLIA`, but `src/assets/index.js` did not export it. Vite reported the missing export during build and the production route could fall into the route error boundary.
+- The Crystallia project card also used a string image value and a non-HTTPS URL.
+
+Summary of changes:
+- Exported `CRYSTALLIA.webp` from `src/assets/index.js`.
+- Updated the Crystallia project card to use the imported image asset, moved the public site to `live_demo_link`, and left source empty.
+- Normalized the Miktsoan project label to `Miktsoan / Professional`.
+- Replaced the corrupted hero dash text with clean ASCII punctuation.
+- Changed Hero and Contact to import their Three.js canvases directly instead of through the broad canvas barrel.
+- Lazy-loaded the Hero computer canvas after the text/CTA shell paints.
+- Lazy-loaded the Contact Earth canvas only when the contact visual approaches the viewport.
+- Removed `Preload all` and `preserveDrawingBuffer` from active canvases where they were not needed.
+- Reduced canvas DPR caps and removed visible 3D loading percentage text to avoid overlaying the hero CTA row.
+- Updated public model paths to use `import.meta.env.BASE_URL` for GitHub Pages-safe asset loading.
+
+Files changed:
+- `src/assets/index.js`
+- `src/constants/index.js`
+- `src/components/Hero.jsx`
+- `src/components/Contact.jsx`
+- `src/components/Loader.jsx`
+- `src/components/index.js`
+- `src/components/canvas/Computers.jsx`
+- `src/components/canvas/Earth.jsx`
+- `src/components/canvas/Stars.jsx`
+- `CODEX.MD`
+
+Commands run:
+- `npm.cmd run build`
+- `npm.cmd run preview -- --host 127.0.0.1 --port 4176`
+- `npm.cmd run preview -- --host 127.0.0.1 --port 4177`
+- `npm.cmd run preview -- --host 127.0.0.1 --port 4178`
+- `Invoke-WebRequest` checks for the production preview route and model asset.
+- Headless Chrome screenshot and DOM checks for the home route.
+- `rg` checks for corrupted text, broken Crystallia URL patterns, and stale barrel exports.
+
+Build/test result:
+- `npm.cmd run build` passed after the fixes.
+- Production preview rendered the home route without the route error fallback text.
+- Existing build warnings remain: outdated Browserslist/caniuse-lite data, Three/lottie eval warning, and the large `three` chunk warning.
+
+Remaining issues:
+- The `three` dependency chunk remains large because the site still uses React Three Fiber/Drei and large public 3D models.
+- `CRYSTALLIA.webp` is a relatively large image and could be compressed in a future asset optimization pass.
+
+Next recommended steps:
+- Run a real-browser click/scroll check before pushing.
+- Consider compressing `CRYSTALLIA.webp` and the public 3D model textures if more speed is needed.

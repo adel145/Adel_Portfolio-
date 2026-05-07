@@ -1,9 +1,11 @@
+import { lazy, Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { profileLinks } from "../constants";
 import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
 import ErrorBoundary from "./ErrorBoundary";
+
+const ComputersCanvas = lazy(() => import("./canvas/Computers"));
 
 const HeroCanvasFallback = () => (
   <div className="h-full w-full flex items-end justify-center pointer-events-none">
@@ -12,6 +14,17 @@ const HeroCanvasFallback = () => (
 );
 
 const Hero = () => {
+  const [showHeroCanvas, setShowHeroCanvas] = useState(false);
+
+  useEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 500px)").matches;
+    if (isMobile) return;
+
+    const timeoutId = window.setTimeout(() => setShowHeroCanvas(true), 800);
+
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
   const scrollToAbout = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -36,9 +49,7 @@ const Hero = () => {
             Full-Stack & AI-Powered Apps Developer.
           </p>
           <p className="mt-3 max-w-3xl text-secondary text-[15px] sm:text-[18px] leading-7 break-words">
-            I build practical products across React, Node.js, automation, data, and ML/AI,
-            with real project experience from academic, business, and portfolio systems.
-            Expected B.Sc. graduation: 07/2026.
+            B.Sc. Computer Science graduate building full-stack and AI-powered applications with React, Node.js, Python, automation, data, and ML/AI, backed by academic, business, and portfolio-based product experience.
           </p>
 
           <div className="mt-7 grid grid-cols-1 sm:flex sm:flex-wrap gap-3 max-w-[520px] sm:max-w-none">
@@ -59,9 +70,15 @@ const Hero = () => {
       </div>
 
       <div className="absolute inset-0 z-[1]">
-        <ErrorBoundary label="Hero computer canvas error" fallback={<HeroCanvasFallback />}>
-          <ComputersCanvas />
-        </ErrorBoundary>
+        {showHeroCanvas ? (
+          <ErrorBoundary label="Hero computer canvas error" fallback={<HeroCanvasFallback />}>
+            <Suspense fallback={<HeroCanvasFallback />}>
+              <ComputersCanvas />
+            </Suspense>
+          </ErrorBoundary>
+        ) : (
+          <HeroCanvasFallback />
+        )}
       </div>
 
       <div className="pointer-events-none absolute z-10 bottom-8 lg:bottom-10 left-1/2 hidden sm:flex -translate-x-1/2 justify-center items-center">

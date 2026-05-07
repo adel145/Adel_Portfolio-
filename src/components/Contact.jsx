@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 
@@ -6,8 +6,9 @@ import { profileLinks } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
-import { Earth } from "./canvas";
 import ErrorBoundary from "./ErrorBoundary";
+
+const Earth = lazy(() => import("./canvas/Earth"));
 
 const EarthFallback = () => (
   <div className="h-full min-h-[300px] rounded-lg border border-[#915eff]/30 bg-tertiary" aria-hidden="true" />
@@ -15,14 +16,39 @@ const EarthFallback = () => (
 
 const Contact = () => {
   const formRef = useRef();
+  const visualRef = useRef(null);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const [shouldRenderEarth, setShouldRenderEarth] = useState(false);
 
   const emailServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const emailTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const emailPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
   const isEmailConfigured = emailServiceId && emailTemplateId && emailPublicKey;
+
+  useEffect(() => {
+    const visual = visualRef.current;
+    if (!visual) return;
+
+    if (!("IntersectionObserver" in window)) {
+      setShouldRenderEarth(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldRenderEarth(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "360px" }
+    );
+
+    observer.observe(visual);
+    return () => observer.disconnect();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -142,13 +168,20 @@ const Contact = () => {
       </motion.div>
 
       <motion.div
+        ref={visualRef}
         variants={slideIn("right", "tween", 0.2, 1)}
         initial="hidden"
         animate="show"
         className="contact-visual xl:flex-1 xl:h-auto md:h-[550px] h-[300px] xs:h-[340px] min-w-0 rounded-lg overflow-hidden"
       >
         <ErrorBoundary label="Earth canvas error" fallback={<EarthFallback />}>
-          <Earth />
+          {shouldRenderEarth ? (
+            <Suspense fallback={<EarthFallback />}>
+              <Earth />
+            </Suspense>
+          ) : (
+            <EarthFallback />
+          )}
         </ErrorBoundary>
       </motion.div>
     </div>

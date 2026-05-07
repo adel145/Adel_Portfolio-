@@ -25,6 +25,7 @@ import systemTesting from "../assets/tech/systemTesting.webp";
 import sprintcity from "../assets/company/sprintcity.webp";
 import Programmer from "../assets/company/Programmer.webp";
 import Welocalize from "../assets/company/Welocalize.webp";
+import CRYSTALLIA from "../assets/company/CRYSTALLIA.webp";
 
 import PetsShop from "../assets/PetsShop.webp";
 import waitertip from "../assets/optimized/waiter.webp";
@@ -45,6 +46,7 @@ export {
   sprintcity,
   Programmer,
   Welocalize,
+  CRYSTALLIA,
   java,
   cpp,
   python,

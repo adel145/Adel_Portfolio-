@@ -1,6 +1,6 @@
 import {Suspense, useEffect, useState} from 'react'
 import {Canvas} from '@react-three/fiber'
-import { OrbitControls, Preload, useGLTF } from '@react-three/drei'
+import { OrbitControls, useGLTF } from '@react-three/drei'
 import CanvasLoader from '../Loader'
 
 const Computers = ({ isMobile }) => {
@@ -55,7 +55,7 @@ const ComputersCanvas = () => {
   if (isMobile) {
     return (
       <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
-        <div className="mb-20 h-36 w-36 xs:h-44 xs:w-44 rounded-full border border-[#915eff]/40 bg-[#151030]/70 shadow-[0_0_80px_rgba(145,94,255,0.35)]" />
+        <div className="mb-20 h-36 w-36 xs:h-44 xs:w-44 sm:h-56 sm:w-[560px] sm:max-w-[72vw] sm:rounded-lg rounded-full border border-[#915eff]/40 bg-[#151030]/70 shadow-[0_0_80px_rgba(145,94,255,0.35)]" />
       </div>
     );
   }
@@ -65,9 +65,9 @@ const ComputersCanvas = () => {
       className="w-full h-full"
       frameloop="demand"
       shadows
-      dpr={[1, 2]}
+      dpr={[1, 1.5]}
       camera={{ position: [20, 3, 5], fov: 24 }}
-      gl={{ preserveDrawingBuffer: true }}
+      gl={{ powerPreference: "high-performance", antialias: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
@@ -78,7 +78,6 @@ const ComputersCanvas = () => {
         <Computers isMobile={isMobile} />
       </Suspense>
 
-      <Preload all />
     </Canvas>
   );
 };
