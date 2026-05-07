@@ -27,8 +27,8 @@ const ProjectCard = ({
 
   return (
     <motion.div className="h-full" variants={fadeIn("up", "spring", index * 0.15, 0.75)} style={{ willChange: "transform, opacity" }}>
-      <Tilt options={{ max: 18, scale: 1, speed: 450 }} className="portfolio-card bg-tertiary p-5 rounded-lg w-full sm:w-[360px] min-h-[560px] flex flex-col">
-        <div className="project-preview relative w-full h-[225px] overflow-hidden rounded-lg">
+      <Tilt options={{ max: 18, scale: 1, speed: 450 }} className="portfolio-card bg-tertiary p-4 sm:p-5 rounded-lg w-full max-w-[360px] min-h-[520px] sm:min-h-[560px] flex flex-col">
+        <div className="project-preview relative w-full h-[190px] sm:h-[225px] overflow-hidden rounded-lg">
           {useImagePreview ? (
             <LazyImage src={image} alt={`${name} project preview`} className="w-full h-full object-cover" />
           ) : (
@@ -43,13 +43,13 @@ const ProjectCard = ({
         </div>
 
         <div className="mt-5 flex-1 flex flex-col">
-          <h3 className="text-white text-[21px] font-bold leading-tight">{name}</h3>
+          <h3 className="text-white text-[19px] sm:text-[21px] font-bold leading-tight">{name}</h3>
           <p className="mt-3 text-secondary text-[14px] leading-6">{description}</p>
         </div>
 
         <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <p key={tag.name} className={`text-[13px] ${tag.color}`}>
+            <p key={tag.name} className={`text-[13px] break-words ${tag.color}`}>
               #{tag.name}
             </p>
           ))}
@@ -95,7 +95,7 @@ const Works = () => {
       <div className="w-full flex">
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
-          className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
+          className="mt-3 text-secondary text-[15px] sm:text-[17px] max-w-3xl leading-7 sm:leading-[30px]"
         >
           A focused set of projects aligned with junior full-stack, automation,
           data, and AI-powered application roles. I keep the descriptions realistic:
@@ -103,7 +103,7 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div className="mt-20 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 justify-items-center">
+      <div className="mt-12 sm:mt-20 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 justify-items-center">
         {projects.map((project, index) => (
           <ProjectCard key={project.name} index={index} {...project} />
         ))}

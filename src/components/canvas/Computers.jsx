@@ -55,7 +55,7 @@ const ComputersCanvas = () => {
   if (isMobile) {
     return (
       <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
-        <div className="mb-24 h-44 w-44 rounded-full border border-[#915eff]/40 bg-[#151030]/70 shadow-[0_0_80px_rgba(145,94,255,0.35)]" />
+        <div className="mb-20 h-36 w-36 xs:h-44 xs:w-44 rounded-full border border-[#915eff]/40 bg-[#151030]/70 shadow-[0_0_80px_rgba(145,94,255,0.35)]" />
       </div>
     );
   }

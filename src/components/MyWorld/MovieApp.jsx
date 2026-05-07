@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "../../utils/motion";
 
@@ -30,25 +30,25 @@ const MovieApp = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   return (
-    <div className="p-6 bg-primary min-h-screen text-white">
+    <div className="pt-28 sm:pt-32 px-4 py-8 sm:p-6 bg-primary min-h-screen text-white overflow-hidden">
       <motion.div variants={textVariant()}>
-        <h1 className="text-4xl font-bold text-center mb-6 text-purple-500">Movie App</h1>
-        <p className="text-center mb-8">A sample movie collection app</p>
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-4 sm:mb-6 text-purple-500">Movie App</h1>
+        <p className="text-center mb-8 text-[15px] sm:text-base">A sample movie collection app</p>
       </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mt-6 max-w-7xl mx-auto">
         {movies.map((movie, index) => (
           <motion.div
             key={movie.id}
             variants={fadeIn("up", "spring", index * 0.3, 0.75)}
-            className="bg-tertiary p-5 rounded-2xl cursor-pointer"
+            className="bg-tertiary p-4 sm:p-5 rounded-lg cursor-pointer"
             onClick={() => setSelectedMovie(movie)}
           >
-            <div className="relative w-full h-[230px]">
+            <div className="relative w-full h-[220px] sm:h-[230px]">
               <img
                 src={movie.cover}
                 alt={movie.title}
-                className="w-full h-full object-cover rounded-2xl"
+                className="w-full h-full object-cover rounded-lg"
               />
             </div>
             <h3 className="text-white text-[20px] font-bold mt-4">{movie.title}</h3>
@@ -59,14 +59,14 @@ const MovieApp = () => {
 
       {selectedMovie && (
         <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-          <div className="bg-tertiary p-6 rounded-lg relative w-3/4 max-w-3xl">
+          <div className="bg-tertiary p-5 sm:p-6 rounded-lg relative w-[calc(100vw-2rem)] max-w-3xl">
             <button
               onClick={() => setSelectedMovie(null)}
-              className="absolute top-2 right-2 bg-red-500 text-white px-4 py-2 rounded-full"
+              className="absolute top-2 right-2 bg-red-500 text-white px-3 sm:px-4 py-2 rounded-md"
             >
               Close
             </button>
-            <h2 className="text-2xl font-bold mb-4">{selectedMovie.title}</h2>
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 pr-20">{selectedMovie.title}</h2>
             <p className="text-secondary mb-4">{selectedMovie.type}</p>
             <p className="mb-6">{selectedMovie.description}</p>
             <div className="text-center text-gray-400">

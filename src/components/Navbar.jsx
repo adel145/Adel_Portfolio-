@@ -18,18 +18,18 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary/95 backdrop-blur-sm`}>
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto gap-5">
+    <nav className={`${styles.paddingX} w-full flex items-center py-4 sm:py-5 fixed top-0 z-20 bg-primary/95 backdrop-blur-sm`}>
+      <div className="w-full flex justify-between items-center max-w-7xl mx-auto gap-3 sm:gap-5">
         <RouterLink
           to="/"
-          className="flex items-center gap-2 min-w-0"
+          className="flex items-center gap-2 min-w-0 flex-1 lg:flex-none"
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0);
           }}
         >
           <img src={logo} alt="Adel Mohsen logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[16px] sm:text-[18px] font-bold cursor-pointer truncate">
+          <p className="text-white text-[15px] sm:text-[18px] font-bold cursor-pointer truncate">
             Adel Mohsen <span className="xl:inline hidden">| CS Student & Full-Stack AI Developer</span>
           </p>
         </RouterLink>
@@ -63,12 +63,12 @@ const Navbar = () => {
           </RouterLink>
         </div>
 
-        <div className="lg:hidden flex flex-1 justify-end items-center">
-          <button type="button" aria-label="Toggle navigation menu" onClick={() => setToggle(!toggle)}>
+        <div className="lg:hidden flex shrink-0 justify-end items-center">
+          <button type="button" aria-label="Toggle navigation menu" className="h-11 w-11 flex items-center justify-center" onClick={() => setToggle(!toggle)}>
             <img src={toggle ? close : menu} alt="" className="w-[28px] h-[28px] object-contain" />
           </button>
-          <div className={`${!toggle ? "hidden" : "flex"} p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[210px] max-w-[calc(100vw-2rem)] z-10 rounded-lg`}>
-            <ul className="list-none flex justify-end items-start flex-col gap-4">
+          <div className={`${!toggle ? "hidden" : "flex"} p-5 black-gradient absolute top-[72px] right-0 mx-4 my-2 w-[calc(100vw-2rem)] max-w-[280px] z-10 rounded-lg`}>
+            <ul className="list-none flex justify-end items-start flex-col gap-4 w-full">
               {navLinks.map((nav) => (
                 <li
                   key={nav.id}

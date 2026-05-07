@@ -67,18 +67,18 @@ const Contact = () => {
   };
 
   return (
-    <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
+    <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-6 sm:gap-10 overflow-hidden">
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
         style={{ willChange: "transform, opacity" }}
         initial="hidden"
         animate="show"
-        className="contact-panel flex-[0.75] bg-black-100 p-8 rounded-lg"
+        className="contact-panel flex-[0.75] bg-black-100 p-4 sm:p-8 rounded-lg min-w-0"
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
 
-        <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col gap-8">
+        <form ref={formRef} onSubmit={handleSubmit} className="mt-8 sm:mt-12 flex flex-col gap-6 sm:gap-8">
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">Your Name</span>
             <input
@@ -88,7 +88,7 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="Adel Mohsen"
               required
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className="bg-tertiary py-4 px-4 sm:px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium w-full"
             />
           </label>
 
@@ -101,7 +101,7 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="name@example.com"
               required
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className="bg-tertiary py-4 px-4 sm:px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium w-full"
             />
           </label>
 
@@ -114,13 +114,13 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="Tell me about the role, project, or opportunity."
               required
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className="bg-tertiary py-4 px-4 sm:px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium w-full"
             />
           </label>
 
           <button
             type="submit"
-            className="bg-tertiary py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-lg"
+            className="bg-tertiary py-3 px-8 outline-none w-full sm:w-fit text-white font-bold shadow-md shadow-primary rounded-lg"
           >
             {loading ? "Sending..." : "Send"}
           </button>
@@ -145,7 +145,7 @@ const Contact = () => {
         variants={slideIn("right", "tween", 0.2, 1)}
         initial="hidden"
         animate="show"
-        className="contact-visual xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+        className="contact-visual xl:flex-1 xl:h-auto md:h-[550px] h-[300px] xs:h-[340px] min-w-0 rounded-lg overflow-hidden"
       >
         <ErrorBoundary label="Earth canvas error" fallback={<EarthFallback />}>
           <Earth />

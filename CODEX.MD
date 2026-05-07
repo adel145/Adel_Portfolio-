@@ -444,3 +444,65 @@ Remaining TODOs:
 - Replace the Udemy placeholder visual with a real certificate image if one is available.
 - Add a valid Miktsoan live demo URL only if one exists.
 - Add a Pet Shop source-code URL only if a separate public repo is confirmed.
+
+### 2026-05-07 Mobile Responsiveness Pass
+
+Date: 2026-05-07
+
+Goal of the session: Fix mobile responsiveness only while preserving the desktop layout, GitHub Pages setup, HashRouter, Career Package content, CV/project links, and dark 3D identity.
+
+Summary of changes:
+- Reduced mobile gutters and section spacing while leaving `sm`/desktop spacing intact.
+- Fixed navbar mobile width, brand truncation, tap target sizing, and dropdown menu bounds.
+- Tightened hero mobile layout: smaller top padding, safer line heights, flex-safe text container, single-column mobile CTA buttons, and smaller mobile 3D fallback visual.
+- Made About, Education, Projects, Skills, Contact, and MyWorld cards fluid below desktop/card breakpoints instead of relying on fixed widths.
+- Adjusted mobile timeline typography, timeline offsets, and date placement with a small targeted CSS media query.
+- Improved contact form/control sizing, mobile button width, and contact 3D visual height.
+- Updated MyWorld demo routes (`todo`, `movie-app`, `event-calendar`, `notes-app`) to avoid narrow-width clipping in forms, cards, modals, and action rows.
+- Added global/root horizontal overflow protection as a final guard against off-canvas animation and canvas artifacts.
+
+Files changed:
+- `src/styles.js`
+- `src/index.css`
+- `src/components/Navbar.jsx`
+- `src/components/Hero.jsx`
+- `src/components/canvas/Computers.jsx`
+- `src/components/About.jsx`
+- `src/components/Experience.jsx`
+- `src/components/Education.jsx`
+- `src/components/Tech.jsx`
+- `src/components/Works.jsx`
+- `src/components/Contact.jsx`
+- `src/components/MyWorld/MyWorld.jsx`
+- `src/components/MyWorld/ToDo.jsx`
+- `src/components/MyWorld/MovieApp.jsx`
+- `src/components/MyWorld/EventCalendar.jsx`
+- `src/components/MyWorld/NotesApp.jsx`
+- `CODEX.MD`
+
+Commands run:
+- `git status --short`
+- `git diff --stat`
+- `npm.cmd run build`
+- `npm.cmd run preview -- --host 127.0.0.1`
+- `npm.cmd run preview -- --host 127.0.0.1 --port 4174`
+- Headless Chrome / DevTools Protocol viewport audit against production preview.
+
+Viewports tested:
+- Home: 360px, 390px, 414px, 430px, 768px.
+- MyWorld gallery: 360px, 390px, 414px, 430px, 768px.
+- MyWorld demos (`todo`, `movie-app`, `event-calendar`, `notes-app`): 390px and 768px.
+- CDP measurements showed `documentElement.scrollWidth` matched the viewport width on mobile checks, with no horizontal overflow offenders.
+
+Build/preview result:
+- `npm.cmd run build` passed.
+- Production preview served successfully at `/Adel_Portfolio-/`.
+- Existing warnings remain: outdated Browserslist/caniuse-lite data, Three/lottie eval warning, and the large `three` chunk warning.
+
+Remaining issues:
+- `src/constants/index.js` was already modified before this pass and remains outside this mobile-only change scope.
+- The 3D bundle is still large by nature.
+
+Next recommended steps:
+- Optionally run `npm.cmd run lint`.
+- Do a quick human scroll-through on a real phone or browser device toolbar before pushing.

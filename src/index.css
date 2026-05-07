@@ -15,6 +15,11 @@
 
 body {
   background: #050816;
+  overflow-x: hidden;
+}
+
+#root {
+  overflow-x: hidden;
 }
 
 .hash-span {
@@ -323,6 +328,39 @@ body {
   background: rgba(21, 16, 48, 0.72);
   font-weight: 700;
   transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+@media (max-width: 639px) {
+  .hero-cta {
+    width: 100%;
+    min-height: 46px;
+    padding-inline: 0.85rem;
+    text-align: center;
+  }
+
+  .vertical-timeline::before {
+    left: 18px;
+  }
+
+  .vertical-timeline-element-content {
+    margin-left: 48px !important;
+    padding: 1rem !important;
+  }
+
+  .vertical-timeline-element-icon {
+    width: 38px !important;
+    height: 38px !important;
+    margin-left: 0 !important;
+  }
+
+  .vertical-timeline-element-date {
+    display: block !important;
+    float: none !important;
+    margin-top: 0.75rem;
+    padding: 0 !important;
+    color: #aaa6c3;
+    opacity: 1 !important;
+  }
 }
 
 .hero-cta:hover,

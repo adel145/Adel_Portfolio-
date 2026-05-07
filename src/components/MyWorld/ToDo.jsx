@@ -49,14 +49,14 @@ const ToDo = () => {
   };
 
   return (
-    <main className="pt-40 p-5 bg-primary min-h-screen text-white">
-      <h1 className="text-4xl font-bold text-center mb-3 text-purple-400">To-Do Demo</h1>
-      <p className="text-center text-secondary mb-8">
+    <main className="pt-28 sm:pt-40 px-4 py-8 sm:p-5 bg-primary min-h-screen text-white overflow-hidden">
+      <h1 className="text-3xl sm:text-4xl font-bold text-center mb-3 text-purple-400">To-Do Demo</h1>
+      <p className="text-center text-secondary mb-8 text-[15px] sm:text-base">
         Client-only localStorage demo. No backend or MongoDB required.
       </p>
 
       <div className="max-w-xl mx-auto">
-        <div className="flex flex-col gap-4 bg-tertiary p-5 rounded-lg">
+        <div className="flex flex-col gap-4 bg-tertiary p-4 sm:p-5 rounded-lg">
           <label className="flex flex-col gap-2">
             <span className="font-medium">Task</span>
             <input
@@ -93,7 +93,7 @@ const ToDo = () => {
           {tasks.map((item) => (
             <li
               key={item.id}
-              className={`flex items-center justify-between gap-3 p-4 rounded-lg shadow-md ${
+              className={`flex flex-col xs:flex-row xs:items-center justify-between gap-3 p-4 rounded-lg shadow-md ${
                 item.completed
                   ? "bg-emerald-900/80"
                   : item.importance === 3
@@ -105,7 +105,7 @@ const ToDo = () => {
             >
               <button
                 onClick={() => toggleTaskCompletion(item.id)}
-                className={`flex-grow text-left ${item.completed ? "line-through text-gray-300" : "text-white"}`}
+                className={`flex-grow text-left break-words w-full xs:w-auto ${item.completed ? "line-through text-gray-300" : "text-white"}`}
               >
                 {item.text}
               </button>
