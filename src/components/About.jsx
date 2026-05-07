@@ -8,15 +8,17 @@ import { fadeIn, textVariant } from "../utils/motion";
 import LazyImage from "./LazyImage";
 
 const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className="w-full max-w-[250px]">
+  <Tilt className="w-full max-w-[280px] sm:max-w-[250px]">
     <motion.div
       variants={fadeIn("right", "spring", index * 0.2, 0.65)}
       style={{ willChange: "transform, opacity" }}
       className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
     >
-      <div className="bg-tertiary rounded-[20px] py-5 px-5 sm:px-8 min-h-[220px] sm:min-h-[240px] flex justify-evenly items-center flex-col">
-        <LazyImage src={icon} alt={title} className="w-16 h-16 object-contain" />
-        <h3 className="text-white text-[18px] sm:text-[20px] font-bold text-center">{title}</h3>
+      <div className="bg-tertiary rounded-[20px] py-5 px-5 sm:px-8 min-h-[190px] sm:min-h-[240px] flex justify-evenly items-center flex-col">
+        <div className="h-16 w-16 sm:h-[72px] sm:w-[72px] rounded-2xl border border-[#915eff]/25 bg-primary/45 p-3 flex items-center justify-center">
+          <LazyImage src={icon} alt={title} className="w-full h-full object-contain" />
+        </div>
+        <h3 className="text-white text-[17px] sm:text-[20px] font-bold text-center leading-tight">{title}</h3>
       </div>
     </motion.div>
   </Tilt>

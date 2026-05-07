@@ -1,0 +1,10 @@
+<svg width="600" height="360" viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="360" rx="28" fill="#100D25"/>
+  <rect x="46" y="48" width="508" height="264" rx="22" fill="#151030" stroke="#915EFF" stroke-width="5"/>
+  <path d="M118 235L152 108H190L228 235M136 190H210" stroke="#F3F3F3" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M262 113V235" stroke="#00CEA8" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="262" cy="82" r="11" fill="#00CEA8"/>
+  <text x="330" y="145" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#F3F3F3">Build AI</text>
+  <text x="330" y="190" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#F3F3F3">Powered Apps</text>
+  <text x="330" y="235" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#AAA6C3">Udemy</text>
+</svg>

@@ -15,8 +15,8 @@ const CertificateCard = ({ index, name, college, description, tags, image, sourc
 
   return (
     <motion.div className="h-full" variants={fadeIn("up", "spring", index * 0.15, 0.75)} style={{ willChange: "transform, opacity" }}>
-      <Tilt options={{ max: 18, scale: 1, speed: 450 }} className="portfolio-card bg-tertiary p-4 sm:p-5 rounded-lg w-full max-w-[350px] min-h-[460px] sm:min-h-[500px] flex flex-col">
-        <div className="relative w-full h-[185px] sm:h-[215px] rounded-lg overflow-hidden bg-[#0b0820] border border-white/5 flex items-center justify-center">
+      <Tilt options={{ max: 18, scale: 1, speed: 450 }} className="portfolio-card bg-tertiary p-4 sm:p-5 rounded-lg w-full max-w-[370px] min-h-[440px] sm:min-h-[500px] flex flex-col">
+        <div className="relative w-full h-[170px] xs:h-[185px] sm:h-[215px] rounded-lg overflow-hidden bg-[#0b0820] border border-white/5 flex items-center justify-center">
           <LazyImage src={image} alt={`${name} certificate`} className="w-full h-full object-contain p-4 sm:p-5" loading="lazy" />
 
           {certificateLink && (

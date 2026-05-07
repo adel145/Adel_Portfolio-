@@ -16,21 +16,27 @@ const HeroCanvasFallback = () => (
 const Hero = () => {
   const [showHeroCanvas, setShowHeroCanvas] = useState(false);
 
+  // useEffect(() => {
+  //   const isMobile = window.matchMedia("(max-width: 500px)").matches;
+  //   if (isMobile) return;
+
+  //   const timeoutId = window.setTimeout(() => setShowHeroCanvas(true), 800);
+
+  //   return () => window.clearTimeout(timeoutId);
+  // }, []);
+
   useEffect(() => {
-    const isMobile = window.matchMedia("(max-width: 500px)").matches;
-    if (isMobile) return;
+  const timeoutId = window.setTimeout(() => setShowHeroCanvas(true), 500);
 
-    const timeoutId = window.setTimeout(() => setShowHeroCanvas(true), 800);
-
-    return () => window.clearTimeout(timeoutId);
-  }, []);
+  return () => window.clearTimeout(timeoutId);
+}, []);
 
   const scrollToAbout = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <section className="hero-space relative w-full min-h-[760px] sm:min-h-screen mx-auto overflow-hidden">
+    <section className="hero-space relative w-full min-h-[840px] sm:min-h-screen mx-auto overflow-hidden">
       <div className="hero-star-field" aria-hidden="true" />
 
       <div
@@ -49,7 +55,7 @@ const Hero = () => {
             Full-Stack & AI-Powered Apps Developer.
           </p>
           <p className="mt-3 max-w-3xl text-secondary text-[15px] sm:text-[18px] leading-7 break-words">
-            B.Sc. Computer Science graduate building full-stack and AI-powered applications with React, Node.js, Python, automation, data, and ML/AI, backed by academic, business, and portfolio-based product experience.
+            B.Sc. Computer Science student building full-stack and AI-powered applications with React, Node.js, Python, automation, data, and ML/AI, backed by academic, business, and portfolio-based product experience.
           </p>
 
           <div className="mt-7 grid grid-cols-1 sm:flex sm:flex-wrap gap-3 max-w-[520px] sm:max-w-none">

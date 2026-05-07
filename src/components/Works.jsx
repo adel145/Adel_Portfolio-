@@ -20,15 +20,20 @@ const ProjectCard = ({
   source_code_link,
   live_demo_link,
 }) => {
-  const useImagePreview = ["Tips Predictor", "Pet Shop E-Commerce"].includes(name);
+  const useImagePreview = [
+    "Miktsoan / Professional",
+    "Crystallia",
+    "Tips Predictor",
+    "Pet Shop E-Commerce",
+  ].includes(name);
   const sourceLink = isValidExternalLink(source_code_link) ? source_code_link : "";
   const liveLink = isValidExternalLink(live_demo_link) ? live_demo_link : "";
   const displayName = name.split(" / ")[0];
 
   return (
     <motion.div className="h-full" variants={fadeIn("up", "spring", index * 0.15, 0.75)} style={{ willChange: "transform, opacity" }}>
-      <Tilt options={{ max: 18, scale: 1, speed: 450 }} className="portfolio-card bg-tertiary p-4 sm:p-5 rounded-lg w-full max-w-[360px] min-h-[520px] sm:min-h-[560px] flex flex-col">
-        <div className="project-preview relative w-full h-[190px] sm:h-[225px] overflow-hidden rounded-lg">
+      <Tilt options={{ max: 18, scale: 1, speed: 450 }} className="portfolio-card bg-tertiary p-4 sm:p-5 rounded-lg w-full max-w-[380px] min-h-[500px] sm:min-h-[560px] flex flex-col">
+        <div className="project-preview relative w-full h-[180px] xs:h-[195px] sm:h-[225px] overflow-hidden rounded-lg">
           {useImagePreview ? (
             <LazyImage src={image} alt={`${name} project preview`} className="w-full h-full object-cover" />
           ) : (

@@ -18,12 +18,19 @@ const Computers = ({ isMobile }) => {
         shadow-mapSize={1024}
       />
       <pointLight intensity={0.8} />
-      <primitive
+      {/* <primitive
         object={computer.scene}
         scale={isMobile ? 0.7 : 0.72}
         position={isMobile ? [0, -3, -2.2] : [0.6, -4.25, -1.55]}
         rotation={[-0.01, -0.2, -0.1]}
-      />
+      /> */}
+
+      <primitive
+  object={computer.scene}
+  scale={isMobile ? 0.58 : 0.72}
+  position={isMobile ? [0, -2.8, -2.4] : [0.6, -4.25, -1.55]}
+  rotation={[-0.01, -0.2, -0.1]}
+/>p
     </mesh>
   );
 };
@@ -52,13 +59,13 @@ const ComputersCanvas = () => {
     };
   }, []);
 
-  if (isMobile) {
-    return (
-      <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
-        <div className="mb-20 h-36 w-36 xs:h-44 xs:w-44 sm:h-56 sm:w-[560px] sm:max-w-[72vw] sm:rounded-lg rounded-full border border-[#915eff]/40 bg-[#151030]/70 shadow-[0_0_80px_rgba(145,94,255,0.35)]" />
-      </div>
-    );
-  }
+  // if (isMobile) {
+  //   return (
+  //     <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
+  //       <div className="mb-20 h-36 w-36 xs:h-44 xs:w-44 sm:h-56 sm:w-[560px] sm:max-w-[72vw] sm:rounded-lg rounded-full border border-[#915eff]/40 bg-[#151030]/70 shadow-[0_0_80px_rgba(145,94,255,0.35)]" />
+  //     </div>
+  //   );
+  // }
 
   return (
     <Canvas

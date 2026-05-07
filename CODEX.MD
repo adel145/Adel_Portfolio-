@@ -655,3 +655,70 @@ Remaining issues:
 Next recommended steps:
 - Run a real-browser click/scroll check before pushing.
 - Consider compressing `CRYSTALLIA.webp` and the public 3D model textures if more speed is needed.
+
+### 2026-05-08 Assets And Mobile Polish Pass
+
+Date: 2026-05-08
+
+Goal of the session: Fix the current icons/images/assets confusion, keep the old dark tech/3D portfolio identity, and improve mobile layout without redesigning the site.
+
+Root cause:
+- Section content comes from `src/constants/index.js`, but several entries still pointed at generic or misleading assets.
+- Reusable assets are exported from `src/assets/index.js`; missing or stale exports can break rendering.
+- Some mobile/tablet grids used card/icon sizing that was too tight for the real viewport width.
+
+Summary of changes:
+- Added local SVG assets for overview service cards, missing skills, Miktsoan, and the Udemy AI apps education card.
+- Updated Overview so AI / Data / ML is the primary card, with clearer icons for Full-Stack, AI Apps, and Automation.
+- Added `Build AI-Powered Apps` from Udemy to Education.
+- Added/fixed visible skill icons for SQL, Vite, Node.js, Bun, MongoDB, AI, and n8n.
+- Set Miktsoan to use a local professional/service-marketplace visual.
+- Kept Crystallia wired to `src/assets/company/CRYSTALLIA.webp`.
+- Improved mobile/tablet card and grid sizing in About, Education, Skills, and Projects.
+- Kept GitHub Pages base/routing, CV links, project links, dark visual identity, and desktop layout intact.
+
+Files changed:
+- `src/assets/index.js`
+- `src/constants/index.js`
+- `src/components/About.jsx`
+- `src/components/Education.jsx`
+- `src/components/Hero.jsx`
+- `src/components/Tech.jsx`
+- `src/components/Works.jsx`
+- `src/assets/overview/*`
+- `src/assets/tech/sql.svg`
+- `src/assets/tech/vite.svg`
+- `src/assets/tech/bun.svg`
+- `src/assets/tech/n8n.svg`
+- `src/assets/tech/ai.svg`
+- `src/assets/projects/miktsoan.svg`
+- `src/assets/education/build-ai-apps.svg`
+- `CODEX.MD`
+
+Asset/content rules for future sessions:
+- Put reusable app images/icons under `src/assets` or a named subfolder.
+- Export reusable assets from `src/assets/index.js`.
+- Reference section images/icons from `src/constants/index.js`.
+- Components should consume the constants data; avoid hard-coded random production image URLs.
+- Public 3D models belong under `public`, and loaders should use `import.meta.env.BASE_URL` for GitHub Pages safety.
+
+Commands run:
+- `npm.cmd run build`
+- `npm.cmd run preview -- --host 127.0.0.1 --port 5173`
+- Headless Chrome viewport audit against `http://127.0.0.1:5173/Adel_Portfolio-/` and `#/myworld`.
+
+Viewports tested:
+- Home: 360px, 390px, 414px, 430px, 768px.
+- MyWorld: 360px, 390px, 414px, 430px, 768px.
+
+Build/preview result:
+- `npm.cmd run build` passed.
+- Preview returned 200 at `http://127.0.0.1:5173/Adel_Portfolio-/`.
+- Browser audit found no route fallback text, no captured console errors, no broken images, and no horizontal overflow offenders at the tested widths.
+
+Remaining warnings/TODOs:
+- Build still warns that Browserslist/caniuse-lite is outdated.
+- Build still warns about `three-stdlib/libs/lottie.js` using eval.
+- The `three` chunk remains large because the portfolio keeps the 3D identity.
+- `CRYSTALLIA.webp` is still large and can be compressed later.
+- Replace SVG placeholder-style visuals with real project/certificate screenshots when available.
