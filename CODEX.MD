@@ -506,3 +506,66 @@ Remaining issues:
 Next recommended steps:
 - Optionally run `npm.cmd run lint`.
 - Do a quick human scroll-through on a real phone or browser device toolbar before pushing.
+
+### 2026-05-07 Hero Scroll Indicator Fix
+
+Date: 2026-05-07
+
+Goal of the session: Fix the Hero bottom scroll indicator without changing the desktop hero design.
+
+Summary of changes:
+- Replaced the Hero scroll indicator's plain `href="#about"` behavior with an accessible button that calls `document.getElementById("about")?.scrollIntoView({ behavior: "smooth", block: "start" })`.
+- Kept the indicator bottom-centered on `sm` and larger screens, with focus/hover states.
+- Hid the indicator below `sm` so it does not overlap the mobile hero text, CTA buttons, or mobile 3D fallback.
+
+Files changed:
+- `src/components/Hero.jsx`
+- `CODEX.MD`
+
+Commands run:
+- `npm.cmd run build`
+
+Build/test result:
+- `npm.cmd run build` passed.
+- Existing warnings remain: outdated Browserslist/caniuse-lite data, Three/lottie eval warning, and the large `three` chunk warning.
+
+Remaining issues:
+- None for the Hero scroll indicator.
+
+Next recommended steps:
+- Optional quick browser click check in preview before pushing.
+
+### 2026-05-07 Hero Gaming Desktop Model Swap
+
+Date: 2026-05-07
+
+Goal of the session: Replace the Hero 3D desktop model with the new gaming desktop PC model while preserving the current hero design, routing, GitHub Pages setup, and portfolio content.
+
+Summary of changes:
+- Replaced the Hero model loader from `desktop_pc` to `gaming_desktop_pc`.
+- Used `import.meta.env.BASE_URL` so the model resolves correctly under the GitHub Pages `/Adel_Portfolio-/` base path.
+- Adjusted desktop model scale and position because the new model initially overlapped the hero text and CTA buttons.
+- Kept the mobile fallback unchanged.
+
+Files changed:
+- `src/components/canvas/Computers.jsx`
+- `public/gaming_desktop_pc/`
+- `CODEX.MD`
+
+Commands run:
+- `npm.cmd run build`
+- `npm.cmd run preview -- --host 127.0.0.1`
+- `npm.cmd run preview -- --host 127.0.0.1 --port 4174`
+- `Invoke-WebRequest` checks for the app route and `/Adel_Portfolio-/gaming_desktop_pc/scene.gltf`.
+- Headless Chrome desktop screenshot check of the Hero section.
+
+Build/test result:
+- `npm.cmd run build` passed.
+- Production preview served the app and the new model asset successfully.
+- Existing warnings remain: outdated Browserslist/caniuse-lite data, Three/lottie eval warning, and the large `three` chunk warning.
+
+Remaining issues:
+- None for the model swap.
+
+Next recommended steps:
+- Optional real-browser visual check before pushing.
