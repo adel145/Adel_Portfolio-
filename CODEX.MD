@@ -722,3 +722,127 @@ Remaining warnings/TODOs:
 - The `three` chunk remains large because the portfolio keeps the 3D identity.
 - `CRYSTALLIA.webp` is still large and can be compressed later.
 - Replace SVG placeholder-style visuals with real project/certificate screenshots when available.
+
+### 2026-05-22 Movie App Completion
+
+Date: 2026-05-22
+
+Goal of the session: Complete the My World Movie App as a polished, responsive, static Netflix-style portfolio demo with legal placeholder video handling.
+
+Summary of changes:
+- Rebuilt `src/components/MyWorld/MovieApp.jsx` into a frontend-only streaming library demo with login, logout, current username display, hero feature, tabs, search, cards, details modals, series seasons/episodes, video player modal, watchlist, continue watching, progress bars, empty states, and image/video-safe fallbacks.
+- Added configured demo users for portfolio testing.
+- Added per-user localStorage storage helpers using `movieApp.auth.v1`, `movieApp.watchlist.v1`, and `movieApp.progress.v1`.
+- Added local fictional movie/series data with comments showing where to paste legal hosted video URLs later.
+- Used only placeholder/legal demo video URLs and did not add piracy, scraping, torrenting, backend, secrets, API keys, or copyrighted streaming sources.
+- Added `MOVIE_APP_GUIDE.md` with setup, editing, storage, legal warning, and future upgrade notes.
+
+Files changed:
+- `src/components/MyWorld/MovieApp.jsx`
+- `src/components/MyWorld/movieLibraryData.js`
+- `src/components/MyWorld/movieAppStorage.js`
+- `MOVIE_APP_GUIDE.md`
+- `CODEX.MD`
+
+Commands run:
+- `Get-ChildItem -Force`
+- `Get-Content CODEX.MD`
+- `Get-Content package.json`
+- `rg --files`
+- `Get-Content src/components/MyWorld/MovieApp.jsx`
+- `Get-Content src/components/MyWorld/MyWorld.jsx`
+- `Get-Content src/App.jsx`
+- `Get-Content src/main.jsx`
+- `Get-Content eslint.config.js`
+- `rg "[^\\x00-\\x7F]" src/components/MyWorld/MovieApp.jsx src/components/MyWorld/movieLibraryData.js src/components/MyWorld/movieAppStorage.js`
+- `npm.cmd run lint`
+- `npm.cmd run build`
+- Production preview smoke check with `npm.cmd run preview -- --host 127.0.0.1 --port 4180` and `Invoke-WebRequest`
+- `git status --short`
+- `git diff --stat`
+- `rg -n "movieApp\\.|Replace this with your legal hosted video URL|Video URL is not configured" src/components/MyWorld MOVIE_APP_GUIDE.md`
+
+Build/test result:
+- `npm.cmd run build` passed.
+- Production preview returned HTTP 200 for `/Adel_Portfolio-/` and `#/movie-app`.
+- `npm.cmd run lint` still fails on pre-existing unrelated lint issues in other files, mainly React Three Fiber JSX props flagged by `react/no-unknown-property`, unused `React` imports, and `tailwind.config.js` `module` global. No new Movie App lint errors were reported.
+
+Remaining issues:
+- Existing unrelated lint configuration/errors remain outside the Movie App scope.
+- `git status` showed existing modifications in `src/components/Hero.jsx` and `src/components/canvas/Computers.jsx`; they were not changed during this Movie App work.
+- The demo video URL is only a public CC0 sample for testing progress. Real portfolio content still needs legal hosted URLs supplied by Adel.
+
+Next recommended steps:
+- Open `#/movie-app`, test both demo users, search, watchlist, details, series episodes, video playback, logout, and refresh persistence in a real browser.
+- Replace `VIDEO_URL_PLACEHOLDER` values with legal hosted video URLs only when ready.
+- Do not commit private or copyrighted video URLs to the public repository.
+
+### 2026-05-22 Movie App Credential Visibility Cleanup
+
+Date: 2026-05-22
+
+Goal of the session: Remove visible demo credential text from the Movie App login UI and public guide while keeping demo login functionality unchanged.
+
+Summary of changes:
+- Removed the visible demo user/password hint from the Movie App login screen.
+- Changed the password input placeholder to generic text.
+- Updated `MOVIE_APP_GUIDE.md` so it says demo credentials are configured in code for portfolio testing instead of listing passwords.
+- Added a stronger warning in the guide that frontend-only login is not real secure authentication.
+- Preserved routing, storage behavior, Movie App features, portfolio layout, and configured demo login functionality.
+
+Files changed:
+- `src/components/MyWorld/MovieApp.jsx`
+- `MOVIE_APP_GUIDE.md`
+- `CODEX.MD`
+
+Commands run:
+- Targeted `rg` checks for visible demo credential text in Movie App, guide, and project memory files.
+- `Get-Content MOVIE_APP_GUIDE.md`
+- `npm.cmd run build`
+
+Build/test result:
+- `npm.cmd run build` passed.
+- The targeted grep check found no visible demo credential/password text in `MovieApp.jsx` or `MOVIE_APP_GUIDE.md`.
+- Existing build warnings remain: outdated Browserslist/caniuse-lite data, Three/lottie eval warning, and the large `three` chunk warning.
+
+Remaining issues:
+- None for this credential visibility cleanup.
+
+Next recommended steps:
+- Open `#/movie-app` and confirm both configured demo users can still log in.
+
+### 2026-05-23 Movie App Google Drive Embed Support
+
+Date: 2026-05-23
+
+Goal of the session: Add temporary Google Drive iframe video support to the static Movie App while keeping HTML5 playback and Continue Watching progress intact.
+
+Summary of changes:
+- Updated `src/components/MyWorld/MovieApp.jsx` so player targets support `videoType`, `videoUrl`, and `embedUrl`.
+- Kept native HTML5 playback for `videoType: "html5"` with existing resume and Continue Watching progress tracking.
+- Added responsive iframe playback for `videoType: "iframe"` with fullscreen support and the note: `Progress tracking is limited for embedded players.`
+- Avoided exact progress tracking for iframe videos.
+- Removed the visible demo username placeholder from the login screen by changing it to generic username text.
+- Updated `src/components/MyWorld/movieLibraryData.js` with a placeholder Google Drive iframe movie and a placeholder Google Drive iframe series episode.
+- Added comments explaining that Google Drive files must be shared as Anyone with the link / Viewer and converted from `/view` to `/preview`.
+- Updated `MOVIE_APP_GUIDE.md` with a `Using Google Drive videos temporarily` section and examples for both HTML5 and iframe video entries.
+
+Files changed:
+- `src/components/MyWorld/MovieApp.jsx`
+- `src/components/MyWorld/movieLibraryData.js`
+- `MOVIE_APP_GUIDE.md`
+- `CODEX.MD`
+
+Commands run:
+- `rg --files`
+- Targeted `rg` checks for Movie App video/login text.
+- `Get-Content` checks for Movie App, movie data, guide, and project memory files.
+- `npm.cmd run build`
+
+Build/test result:
+- `npm.cmd run build` passed.
+- Existing build warnings remain: outdated Browserslist/caniuse-lite data, Three/lottie eval warning, and the large `three` chunk warning.
+
+Remaining notes:
+- Google Drive iframe URLs are placeholders only; no private video URLs, backend, API keys, or real private assets were added.
+- Google Drive iframe videos are not truly private in this public GitHub Pages app.

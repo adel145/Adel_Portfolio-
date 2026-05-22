@@ -36,7 +36,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="hero-space relative w-full min-h-[840px] sm:min-h-screen mx-auto overflow-hidden">
+    <section className="hero-space relative w-full min-h-[760px] sm:min-h-screen mx-auto overflow-hidden">
       <div className="hero-star-field" aria-hidden="true" />
 
       <div
@@ -87,12 +87,12 @@ const Hero = () => {
         )}
       </div>
 
-      <div className="pointer-events-none absolute z-10 bottom-8 lg:bottom-10 left-1/2 hidden sm:flex -translate-x-1/2 justify-center items-center">
-        <button
+      <div className="pointer-events-none absolute z-20 bottom-5 sm:bottom-8 lg:bottom-10 left-1/2 flex -translate-x-1/2 justify-center items-center">
+      <button
           type="button"
           aria-label="Scroll to about section"
           onClick={scrollToAbout}
-          className="pointer-events-auto w-[34px] h-[60px] lg:w-[35px] lg:h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2 transition-colors hover:border-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#915eff] focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+          className="pointer-events-auto w-[30px] h-[52px] sm:w-[34px] sm:h-[60px] lg:w-[35px] lg:h-[64px] rounded-3xl border-[3px] sm:border-4 border-secondary flex justify-center items-start p-2 transition-colors hover:border-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#915eff] focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
         >
           <motion.span
             aria-hidden="true"
